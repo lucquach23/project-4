@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Model\Category_shirt;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Cart;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +25,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('Client.header',function($view){
+            $loai_sp = Category_shirt::all();
+            
+            $view->with('loai_sp',$loai_sp);
+        });
+        // view()->composer('Client.header',function($view){
+           
+        //         $oldCart=Session('Cart')?Session('Cart'):null;
+        //     $newCart=new Cart($oldCart);
+        //         $view->with('newCart',$newCart);
+            
+        // });
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Model\Account as AppAccount;
-use App\Model\Account;
+use App\Model\Backend\Account;
 use DB;
 
 use App\Http\Controllers\Controller;
@@ -18,12 +18,12 @@ class AccountController extends Controller
     public function getList()
     {
     	$account=Account::all();
-        return view('LayoutsAdmin.Account.listAccount',['account'=>$account]);
+        return view('Admin.Account.listAccount',['account'=>$account]);
     }
 
     public function addAccount()
     {
-        return view('LayoutsAdmin.Account.addAccount');
+        return view('Admin.Account.addAccount');
     }
     public function PostAddAccount(Request $request)
     {
@@ -64,13 +64,13 @@ class AccountController extends Controller
         // print_r($acc);
     //   }
       //echo $acc->user_name;
-    return view('LayoutsAdmin.Account.EditAccount',['acc'=>$acc]);
+    return view('Admin.Account.EditAccount',['acc'=>$acc]);
     
     }
     public function postEdit(Request $request,$id)
     {
         //$acc=DB::table('account')->where('id_account',$id)->get()->toArray();
-        $acc= Account::find($id);  
+        
         $this->validate($request,[
             'tendangnhap'=>'required|min:4|max:10',
             'matkhau'=>'required|min:4|max:20',
@@ -89,7 +89,7 @@ class AccountController extends Controller
             'quyen.required'=>'Yêu cầu chọn quyền!',
  
         ]);
-
+        $acc= Account::find($id);  
         $acc->user_name=$request->tendangnhap;
         $acc->password=$request->matkhau;
         $acc->name_of_user=$request->hoten;
