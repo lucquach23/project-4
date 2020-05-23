@@ -35,18 +35,21 @@ route::get('detail/{id}','Frontend\ShirtController@ViewDetail');
 
 route::get('/Add-Cart/{id}','CartController@AddCart');
 route::get('/Delete-Item-Cart/{id}','CartController@DeleteItemCart');
-route::get('/ListCart','CartController@ViewListCart');
+route::get('/ListCart','CartController@ViewListCart')->name('viewlistcart');
 route::get('/Delete-Item-List-Cart/{id}','CartController@DeleteListItemCart');
 //route::get('/Save-Item-List-Cart/{id}/{quanty}','CartController@SaveListItemCart');
 route::get('/Save-Item-List-Cart/{id}/{quanty}/{size}','CartController@SaveListItemCart');
 
 
+//checkout
 
-
-
-
-
-
+route::get('/login-checkout','CheckoutController@login_checkout')->name('login_checkout');
+route::post('/add_customer','CheckoutController@add_customer');
+route::get('/payment','CheckoutController@getpayment')->name('getpayment');
+route::post('/payment','CheckoutController@postpayment')->name('postpayment');
+route::post('/login_customer','CheckoutController@login_customer');
+route::get('/logout','CheckoutController@logout')->name('logout');
+route::get('/order_customer','CheckoutController@order_customer')->name('order_customer');
 
 
 

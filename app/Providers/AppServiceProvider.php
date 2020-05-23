@@ -30,12 +30,13 @@ class AppServiceProvider extends ServiceProvider
             
             $view->with('loai_sp',$loai_sp);
         });
-        // view()->composer('Client.header',function($view){
+        view()->composer('Client.header',function($view){
            
-        //         $oldCart=Session('Cart')?Session('Cart'):null;
-        //     $newCart=new Cart($oldCart);
-        //         $view->with('newCart',$newCart);
+                $namecus=Session('customer_name')?Session('customer_name'):null;
+               // $newCart=new Cart($oldCart);
+                
+                $view->with('namecus',$namecus);
             
-        // });
+        });
     }
 }

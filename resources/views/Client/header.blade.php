@@ -9,63 +9,96 @@
                     </a>
                 </h1>
                 <!-- //logo -->
-                <div class="w3ls_right_nav ml-auto d-flex">
-                  
-                    <form class="nav-search form-inline my-0 form-control" action="#" method="post">
-                      
-                        <input style="border: 1px solid" class="btn btn-outline-suesscess  ml-3 my-sm-0" type="text"  placeholder="Enter your key">
-                        <input class="btn btn-outline-secondary  ml-3 my-sm-0" type="submit" value="Search">
-                    </form>
-                   
-                    <div class="nav-icon d-flex">
-                        <!-- sigin and sign up -->
-                        <a class="text-dark login_btn align-self-center mx-3" href="#myModal_btn" data-toggle="modal" data-target="#myModal_btn">
-                            <i class="far fa-user"></i>
-                        </a>
-                        <!--end  sigin and sign up -->
-
-                        <!-- shopping cart -->
-                        <button style="    font-size: 26px;border-color:#64b3f4;border-style: double;padding: 10px;background: white;color: #64b3f4;" type="button"  class="fas fa-shopping-bag"   data-toggle="modal" data-target="#modalCart">
-                       @if(Session::has('Cart')!=null)
-                        <div id="total-quanty-show" style="position: absolute;color: red;font-size: 18px;top: 20px;right: 123px;">
-                        {{Session::get('Cart')->totalQuanty}}
-                        </div>
-                        @else
-                        <div id="total-quanty-show" style="position: absolute;color: #64b3f4;font-size: 18px;top: 20px;right: 123px;">
-                        0
-                        </div>
-                        @endif
-                        </button>
-                        <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
+                <div class="w3ls_right_nav ml-auto d-flex" style="float: right">
+                    <ul id="menutopheader" style="display: flex;">
+                        {{-- <li id="li1">
+                            <form action="#">
+                                <input  style="cursor:text; border: 1px solid #64b3f4;" placeholder="Search..."  class="btn btn-outline-suesscess" type="text" >
+                                <button style="background-color: white;
+                                border: none;
+                                color: #64b3f4;
+                                font-size: 22px; cursor: pointer;" class="fa fa-search" href="#" id="btnsearch"></button>
+                            </form>
+                        </li> --}}
+                        </li id="li2">
+                           @if(Session::has('customer_name')!=null)
+                           <li><a href="{{route('logout')}}">Đăng xuất</a></li>
+                    <li><a href="{{route('order_customer')}}" class="far fa-user"></a></li>
+                           @else
+                           <li id="loginli"><a href="{{route('login_checkout')}}">Đăng nhập</a></li>
+                           @endif
                         
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <!--Header-->
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Your cart</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <!--Body-->
-                            <div id="change-item-cart">
-                                <div class="modal-body">
-                               @include('Client.Cart')
-                                
-                                </div>
-                            </div>
+                        
+
+
+                        <li>
                             
-                            <!--Footer-->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                                <a href="/ListCart" class="btn btn-primary">Checkout</a>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>                       
-                    </div>
+                            <button   style="border: none;
+                            background-color: white;
+                            color: #64b3f4;
+                            font-size: 24px; cursor: pointer;" type="button"  class="fas fa-shopping-bag"   data-toggle="modal" data-target="#modalCart">
+                                :  @if(Session::has('Cart')!=null)
+                                <b id="total-quanty-show" style="font-size: 18px">{{Session::get('Cart')->totalQuanty}}</b>
+                                @else
+                                <b id="total-quanty-show" style="font-size: 18px">0</b>
+                                
+                                @endif
+                               
+                                 </button>
+                                
+                                 <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+         
+         
+         
+         
+         
+         
+                                 <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                     <!--Header-->
+                                     <div class="modal-header">
+                                         <h4 class="modal-title" id="myModalLabel">Your cart</h4>
+                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">×</span>
+                                         </button>
+                                     </div>
+                                     <!--Body-->
+                                     <div id="change-item-cart">
+                                         <div class="modal-body">
+                                        @include('Client.Cart')
+                                         
+                                         </div>
+                                     </div>
+                                     
+                                     <!--Footer-->
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                                         <a href="/ListCart" class="btn btn-primary">Checkout</a>
+                                     </div>
+                                     </div>
+                                 </div>
+                            
+                        </li>
+                        <li>
+                            @if(Session::has('customer_name')!=null)
+                            <div>Hello, {{Session::get('customer_name')}}</div>
+                                @else
+                                <div></div>
+                                @endif
+                        </li>
+                    </ul>
+                </div>
+                
+
+
+                       
+
+
+
+
+                        
+                   
                 </div>
             </nav>
             <!-- //top nav -->
@@ -125,12 +158,14 @@
     }
 
     .fixed {
+        
     position: fixed;
     top:0; left:0;
     width: 100%; 
     z-index: 909999;
     background-color: #ccc;
     }
+  
 </style>
 <!-- <script>
 	function AddCart(id_shirt){
@@ -148,13 +183,31 @@
 		});
 	}
 </script> -->
-<!-- <script>
+<script>
     $(window).scroll(function(){
   if ($(window).scrollTop() >= 330) {
     $('.sticky').addClass('fixed');
+   //document.getElementById("li1").style.visibility = "hidden";
+   // document.getElementById("li2").style.visibility = "hidden";
+    //$('$li1').style.visibility = "hidden";
+//$('$li2').style.visibility = "hidden";
    }
    else {
     $('.sticky').removeClass('fixed');
+   // ocument.getElementById("li1").style.display="block";
+   // document.getElementById("li2").style.display="block";
    }
 });
-</script> -->
+</script>
+<style>
+    #menutopheader>li{
+        padding-right: 20px;
+        padding-left: 20px;
+        
+    }
+    #btnsearch{
+            position: absolute;
+            padding-top: 7px;
+        }
+       
+</style>

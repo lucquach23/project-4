@@ -82,44 +82,16 @@
             <li> Chi tiết chọn size <img style="width: 400px" src="/source/images-shirt/hoa-tiet/size.jpg" alt=""></li>
         </ul>
     </div>
+  
     <div style="padding-left: 123px" class="col-md-8 address_form">
-        <h4>Chi tiết đặt hàng</h4>
-        <form action="payment.html" method="post" class="creditly-card-form shopf-sear-headinfo_form">
-            <div class="creditly-wrapper wrapper">
-                <div class="information-wrapper">
-                    <div class="first-row form-group">
-                        <div class="controls">
-                            <label class="control-label">Họ tên người nhận: </label>
-                            <input class="billing-address-name form-control" type="text" name="name"
-                                placeholder="Full name">
-                        </div>
-                        <div class="card_number_grids">
-                            <div class="card_number_grid_left">
-                                <div class="controls">
-                                    <label class="control-label">Số điện thoại:</label>
-                                    <input class="form-control" type="text" placeholder="Mobile number">
-                                </div>
-                            </div>
-                            <div class="card_number_grid_right">
-                                <div class="controls">
-                                    <label class="control-label">Địa chỉ nhận hàng: </label>
-                                    <textarea required class="form-control" type="text" placeholder="Địa chỉ nhận"></textarea>
-                                </div>
-                            </div>
-                            {{-- <div class="clear"> </div> --}}
-                        </div>
-                        <div class="controls">
-                            <label class="control-label">Email</label>
-                            <input class="form-control" type="text" placeholder="Your mail">
-                        </div>
-                        <div class="controls">
-                            <label class="control-label">Ghi chú: </label>
-                            <textarea  class="form-control" type="text" placeholder="Ghi chú"></textarea>
-                        </div>
-                    </div>
-                    <button class="submit check_out">Đặt hàng</button>
-                </div>
-            </div>
-        </form>
+        {{-- <div>Vui lòng chọn size trước khi tiến hành đặt hàng</div> --}}
+        @if(Session::has('Cart')!=null&&Session::has('customer_id'))
+        <a  type="button" class="btn btn-primary" href="{{route('getpayment')}}">Tiến hành đặt hàng</a>
+    @endif
+    @if(Session::has('Cart')!=null&&Session::has('customer_id')==null)
+        <a href="{{URL::to('/login-checkout')}}" type="button" class="btn btn-primary">Tiến hành đặt hàng</a>
+        @else 
+        <button disabled="true" type="button" class="btn btn-secondary">Tiến hành đặt hàng</button>
+        @endif
     </div>
 </div>
