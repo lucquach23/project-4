@@ -1,6 +1,6 @@
 <div class="side-bar col-lg-3">
 					<!--preference -->
-					<div class="left-side">
+					{{-- <div class="left-side">
 						<h3 class="shopf-sear-headits-sear-head">
 							Categories</h3>
 						<ul>
@@ -33,7 +33,7 @@
 								<label for="cat4">Sơ mi Denim</label>
 							</li>
 						</ul>
-					</div>
+					</div> --}}
 					<!-- // preference -->
 					<div class="search-hotel">
 						<h3 class="shopf-sear-headits-sear-head">
@@ -66,7 +66,7 @@
 					</div> -->
 					<!-- // preference -->
 					<!-- discounts -->
-					<div class="left-side">
+					{{-- <div class="left-side">
 						<h3 class="shopf-sear-headits-sear-head">Sizes</h3>
 						<ul>
 							<li>
@@ -98,10 +98,10 @@
 								<label for="size7">XXXL</label>
 							</li>
 						</ul>
-					</div>
+					</div> --}}
 					<!-- //discounts -->
 					<!-- Binding -->
-					<div class="left-side">
+					{{-- <div class="left-side">
 						<h3 class="shopf-sear-headits-sear-head">Color</h3>
 						<div class="d-flex">
 							<ul>
@@ -149,29 +149,33 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> --}}
 					<!-- //Binding -->
 					<!-- discounts -->
 					<div class="left-side">
+					<form action="{{route('discount')}}" method="post">
+						{{@csrf_field()}}
 						<h3 class="shopf-sear-headits-sear-head">Discount</h3>
-						<ul>
-							<li>
-								<input type="checkbox" class="checked" name="dis1" id="dis1">
-								<label for="dis1">5% - 20%</label>
-							</li>
-							<li>
-								<input type="checkbox" class="checked" name="dis2" id="dis2">
-								<label for="dis2">20% - 40%</label>
-							</li>
-							<li>
-								<input type="checkbox" class="dis3" name="dis3" id="dis3">
-								<label for="dis3">40% - 60%</label>
-							</li>
-							<li>
-								<input type="checkbox" class="checked" name="dis4" id="dis4">
-								<label for="dis4">60% or more</label>
-							</li>
-						</ul>
+							<ul>
+								<li>
+									<input type="radio" class="checked" value="52"  name="dis" id="dis1">
+									<label for="dis1">5% - 20%</label>
+								</li>
+								<li>
+									<input type="radio" class="checked" value="24"  name="dis" id="dis2">
+									<label for="dis2">20% - 40%</label>
+								</li>
+								<li>
+									<input type="radio" class="dis3" value="46"  name="dis" id="dis3">
+									<label for="dis3">40% - 60%</label>
+								</li>
+								<li>
+									<input type="radio" class="checked" value="60"  name="dis" id="dis4">
+									<label for="dis4">60% or more</label>
+								</li>
+									<button type="submit" class="fa fa-arrow-right" aria-hidden="true"></button>
+							</ul>
+						</form>
 					</div>
 					<!-- //discounts -->
 					<!-- reviews -->

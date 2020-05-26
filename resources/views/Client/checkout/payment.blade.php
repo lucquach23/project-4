@@ -113,14 +113,20 @@
                                 <li> Chi tiết chọn size <img style="width: 400px" src="/source/images-shirt/hoa-tiet/size.jpg" alt=""></li>
                             </ul>
                         </div>
-                        @if(count($errors)>0)
+                       
+                        <div style="padding-left: 123px" class="col-md-8 address_form">
+                            @if(count($errors)>0)
 							<div class="alert alert-danger">
 								@foreach($errors->all() as $err)								
 								  {{$err}}<br>								
 								@endforeach
 							</div>						  
-						  @endif
-                        <div style="padding-left: 123px" class="col-md-8 address_form">
+                          @endif
+                          @if(session('mess'))
+
+                            <div class="alert alert-success">{{session('mess')}}</div>
+                            <h4><a href="{{route('listShirt')}}">Tiếp tục mua hàng</a></h4>
+                        @else
                             <h4>Chi tiết đặt hàng</h4>
                         <form action="{{route('postpayment')}}" method="post" class="creditly-card-form shopf-sear-headinfo_form">
                             {{ @csrf_field() }}    
@@ -161,8 +167,9 @@
                                     </div>
                                 </div>
                             </form>
+                   
                         </div>
-                       
+                       @endif
                     </div>
                     
                 </div>

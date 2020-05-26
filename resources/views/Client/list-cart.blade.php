@@ -90,7 +90,9 @@
     @endif
     @if(Session::has('Cart')!=null&&Session::has('customer_id')==null)
         <a href="{{URL::to('/login-checkout')}}" type="button" class="btn btn-primary">Tiến hành đặt hàng</a>
-        @else 
+        
+        @endif
+        @if(Session::has('Cart')==null&&Session::has('customer_id')==null)
         <button disabled="true" type="button" class="btn btn-secondary">Tiến hành đặt hàng</button>
         @endif
     </div>

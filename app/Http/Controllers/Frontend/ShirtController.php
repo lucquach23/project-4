@@ -36,4 +36,14 @@ class ShirtController extends Controller
         $viewDetail=DB::table('shirt')->where('id_shirt',$id)->get();
         return view('Client.viewDetail',compact('viewDetail','productCare'));
     }
+    public function discount(Request $req){
+        
+        if(isset($req->dis))
+        {
+            $dis=$req->dis;
+
+        }else
+        $dis=false;
+        dd($dis);
+    }
 }

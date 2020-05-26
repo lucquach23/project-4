@@ -25,14 +25,28 @@
         <div class="container">
             <div class="row my-sm-5">
             <div class="col-lg-4 single-right-left">
-                    <div class="grid images_3_of_2">
+                <div class="grid images_3_of_2">
                         <div class="flexslider1">
                             <ul class="slides">
                                 <li data-thumb="/source/images-shirt/{{$vd->image}}">
                                     <div class="thumb-image">
                                         <img src="/source/images-shirt/{{$vd->image}}" data-imagezoom="true" alt=" " class="img-fluid"> </div>
                                 </li>
-                                
+                                <li>
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                        <div style="margin-top: 20px; border: 1px solid" class="carousel-inner">
+                                          <div class="carousel-item active">
+                                            <img class="d-block " style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img class="d-block "style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img class="d-block "style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                          </div>
+                                        </div>
+                                      </div>
+                                </li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -71,7 +85,7 @@
                             </li>
                         </ul>
                         <div class="clearfix"> </div>
-                        <h6>{{number_format($vd->price_sell)}} Vnđ</h6>
+                        <h6>{{number_format($vd->price_sell)}} </h6>
                     </div>
                     <div class="desc_single">
                         <h5>Trạng thái: {{$vd->quantity_has>0?'Còn hàng':'Hết hàng'}}</h5>
