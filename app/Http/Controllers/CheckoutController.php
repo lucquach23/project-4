@@ -53,6 +53,7 @@ class CheckoutController extends Controller
     }
     public function login_customer(Request $req)
     {
+
         $un=$req->username_login;
         $pw=$req->password_login;
         //dd($un,$pw);
@@ -61,6 +62,7 @@ class CheckoutController extends Controller
         {
             Session::put('customer_id', $rs->id_customer);
             Session::put('customer_name', $rs->name);
+            //dd(Session::get(''))
             return Redirect::to('/payment');
         }else{
             return back()->with('mess','Tên đăng nhập hoặc mật khẩu không chính xác');
@@ -69,10 +71,50 @@ class CheckoutController extends Controller
         
 
     }
+    public function getChangeInfo($id)
+    {
+        $rs=DB::table('customer')->where('id_customer',$id)->first();
+        return view('Client.changeInfo',['info'=>$rs]);
+    }
+    public function postChangeInfo(Request $req, $id)
+    {
+        $this->validate($req,[
+            'hoten'=>'required|min:4|max:30',
+            'diachi'=>'required|min:4|max:300',
+            
+            'sdt'=>'required|regex:/^\d{10}$/',
+            'mk1'=>'required|min:4|max:30',
+            'mk2'=>'required|min:4|max:30|same:mk1',]
+        // ],[
+        //     'fullname.required'=>'Mời nhập tên !',
+        //     'fullname.min'=>'Họ tên tối thiểu 4 kí tự và tối đa 30 kí tự!',
+        //     'fullname.max'=>'Họ tên tối thiểu 4 kí tự và tối đa 30 kí tự!',
+        //     'address.required'=>'Mời nhập địa chỉ!',
+        //     'address.min'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 300 kí tự!',
+        //     'address.max'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 300 kí tự!',
+        //     'phone.required'=>'Mời nhập số điện thoại của bạn!',
+        //     'username.required'=>'Mời nhập tên tài khoản',
+        //     'pass.required'=>'Yêu cầu nhập mật khẩu',
+        // ]
+    );
+    $info=array();
+    $info['name']=$req->hoten ;
+    $info['address']=$req->diachi ;
+    $info['email']=$req->email;
+    $info['phone']=$req->sdt;
+    $info['password']=$req->mk1;
+    $rs=DB::table('customer')->where('id_customer',$id)
+    ->update(['name'=>$req->hoten,'address'=>$req->diachi,'email'=>$req->email,'phone'=>$req->sdt,'password'=>$req->mk1]);
+    if($rs)
+    {
+        return back()->with('mess','Thay đổi thành công');
+    }
+    }
     public function logout()
     {
+        //dd(Session::get('customer_id'));
         Session::flush();
-        return redirect('/');
+        return redirect()->route('home');
     }
     public function getpayment()
     {
@@ -143,6 +185,12 @@ class CheckoutController extends Controller
   public function distroy_order_cus($id_order)
   {
       DB::table('_order')->where('id_order',$id_order)->update(['status'=>4]);
+      return back();
+      //dd($id_order);
+  }
+  public function re_Order($id_order)
+  {
+      DB::table('_order')->where('id_order',$id_order)->update(['status'=>1,'date_order'=>date('y-m-d')]);
       return back();
       //dd($id_order);
   }

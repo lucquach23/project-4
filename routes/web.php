@@ -50,22 +50,28 @@ route::post('/add_customer','CheckoutController@add_customer');
 route::get('/payment','CheckoutController@getpayment')->name('getpayment');
 route::post('/payment','CheckoutController@postpayment')->name('postpayment');
 route::post('/login_customer','CheckoutController@login_customer');
-route::get('/logout','CheckoutController@logout')->name('logout');
+
 route::get('/order_customer','CheckoutController@order_customer')->name('order_customer');
 route::get('/detail-order-cus/{id}','CheckoutController@detail_order_cus');
 route::get('/distroy_order_cus/{id_order}','CheckoutController@distroy_order_cus');
+route::get('/re_Order/{id_order}','CheckoutController@re_Order')->name('re_Order');
 
-
-
+route::get('/logoutcus','CheckoutController@logout')->name('logoutcus');
+route::get('/changeInfo/{id}','CheckoutController@getChangeInfo');
+route::post('/changeInfo/{id}','CheckoutController@postChangeInfo');
 
 //'middleware' => 'CheckLogin'
 
 
 
-//admin 'middleware'=>'check'
+//admin 'middleware'=>'check' 'middleware' => 'check'
 route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
+	
+	
 	//home admin
 	route::get('home','HomeAdminController@home')->name('adminhome');
+	
+	
 	//account
 	route::group(['prefix'=>'account'],function(){
 		route::get('list','AccountController@getList')->name('listAccount');

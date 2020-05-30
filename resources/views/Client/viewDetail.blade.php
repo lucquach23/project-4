@@ -36,13 +36,13 @@
                                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div style="margin-top: 20px; border: 1px solid" class="carousel-inner">
                                           <div class="carousel-item active">
-                                            <img class="d-block " style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                            <img class="d-block " style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
                                           </div>
                                           <div class="carousel-item">
-                                            <img class="d-block "style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                            <img class="d-block "style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
                                           </div>
                                           <div class="carousel-item">
-                                            <img class="d-block "style="width: 268px; height: 160px;" src="/source/images-shirt/{{$vd->image}}">
+                                            <img class="d-block "style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
                                           </div>
                                         </div>
                                       </div>
@@ -85,10 +85,14 @@
                             </li>
                         </ul>
                         <div class="clearfix"> </div>
-                        <h6>{{number_format($vd->price_sell)}} </h6>
+                        <h6>{{number_format($vd->price_sell)}} VNĐ</h6>
                     </div>
                     <div class="desc_single">
                         <h5>Trạng thái: {{$vd->quantity_has>0?'Còn hàng':'Hết hàng'}}</h5>
+                        
+                    </div>
+                    <div class="desc_single">
+                        <h5>Màu: Như trong ảnh</h5>
                         
                     </div>
                     <div class="desc_single">
@@ -113,33 +117,7 @@
                                 <li>
                                     <span>Fit :</span> Slim, Muscle
                                 </li>
-                                <!-- <li>
-                                    <span>Size :</span> 
-                                    <select>
-                                        <option selected="selected">S</option>
-                                        <option>XS</option>
-                                        <option>L</option>
-                                        <option>M</option>
-                                        <option>XL</option>
-                                        <option>XXL</option>
-                                        <option>XXXL</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span>Số lượng : </span>
-                                    <select>
-                                        <option selected="selected">1</option>
-                                        <option >2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>
-                                </li> -->
+                              
                             </ul>
 
                         </div>

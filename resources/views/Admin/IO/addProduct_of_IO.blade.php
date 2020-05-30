@@ -1,86 +1,142 @@
 @extends('Admin.app')
 @section('content')
 <div style="width:500px;" class="container">
-<div class="row">
-@if(count($errors)>0)
+    <div class="row">
+        @if(count($errors)>0)
 
-  <div class="alert alert-danger">
-      @foreach($errors->all() as $err)
-      
-        {{$err}}<br>
-      
-      @endforeach
-  </div>
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $err)
 
-@endif
-@if(session('mess'))
+            {{$err}}<br>
 
-  <div class="alert alert-success">{{session('mess')}}</div>
+            @endforeach
+        </div>
 
-@endif
-{{-- action="/postAddPro_of_IO/{{$id}}" --}}
-</div>
-<form  action="{{$id}}" method="post" class="form-horizontal">
-<input type="hidden" name="_token" value="{{csrf_token()}}">
-<h3>Thêm sản phẩm</h3>
-    <div class="form-group">
-        <label class="control-label col-sm-4" >Tên đăng nhập:</label>
-        
-         <input name="user_name" type="" class="form-control" placeholder="Điền tên đăng nhập">
-        
-  </div>
+        @endif
+        @if(session('mess'))
 
-  <div class="form-group">
-        <label class="control-label col-sm-4" for="">Mật khẩu:</label>
-        
-         <input name="matkhau" type="password" class="form-control " id="" placeholder="Điền mật khẩu">
-        
-  </div>
+        <div class="alert alert-success">{{session('mess')}}</div>
 
-  <div class="form-group">
-        <label class="control-label col-sm-4" for="">Họ tên:</label>
-      
-         <input name="hoten" type="" class="form-control " id="" placeholder="Điền tên người sử dụng">
-     
-  </div>
+        @endif
+        {{-- action="/postAddPro_of_IO/{{$id}}" --}}
+    </div>
+    <form action="{{$io->id_import_order}}" method="post" class="form-horizontal">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <h3>Thêm sản phẩm</h3>
+        <div style="display: flex;width: 544px;" class="form-group">
+            <div>
+                <label style="    width: 83px;" class="control-label ">Mã đơn nhập:</label>
+                <input style="width: 50px" name="madonnhap" type="" class="form-control"
+                    value="{{$io->id_import_order}}">
+            </div>
+            <div style="margin-right: 50px;margin-left: 50px">
+                <label class="control-label ">Mã nhà cung cấp:</label>
+                <input name="manhacungcap" type="" class="form-control" value="{{$io->id_supplier}}"></input>
+            </div>
+            <div>
+                <label class="control-label ">Ngày:</label>
+                <input name="ngay" type="" class="form-control" value="{{$io->create_date}}">
+            </div>
+            <div>
+                <label class="control-label ">Seri:</label>
+                <input name="seri" type="" class="form-control" value="{{$seri}}">
+            </div>
+        </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Email:</label>
+       
+        <div class="form-group">
+            <label class="control-label col-sm-4" >Tên áo:</label>
+             <input name="tenao" type="" class="form-control"   placeholder="Tên áo...">       
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="">Loại áo :</label>      
+        <select name="loaiao" style="width: 160px;" class="form-control">
+            @foreach($loai as $l)
+            <option value="{{$l->id_category_shirt}}">{{$l->id_category_shirt}} - {{$l->description}}</option>
+            @endforeach
+        </select>      
+    </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" >Mô tả:</label>
+        <textarea name="mota" type="" class="form-control"   placeholder="Mô tả về áo..."></textarea>       
+      </div>
     
-      <input name="email" type="email" class="form-control " id="email" placeholder="Điền email">
+      <div class="form-group">
+            <label class="control-label col-sm-4" for="">Ảnh </label>
+          
+             <input name="anh" type="file">
+         
+      </div>
     
-  </div>
-
-  
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="">Quyền :</label>
-   
-    <select name="quyen" style="width: 160px;" class="form-control">
-        <option value="0">0 - Nhân viên</option>
-      <option value="1">1 - Admin</option>
+      <div  class="form-group">
+        <label class="control-label col-sm-2" for="email">Size:</label>
+        <select name="size" style="width: 160px;" class="form-control">           
+            <option value="S">S</option>
+            <option value="XS">XS</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="XXXL">XXXL</option>           
+        </select>          
+      </div>
+      <div  class="form-group">
+        <label class="control-label col-sm-2" for="email">Chất Liệu:</label>
+        <select name="chatlieu" style="width: 160px;" class="form-control">           
+            <option value="Voan">Voan</option>
+            <option value="Lanh">Lanh</option>
+            <option value="Kaki">Kaki</option>
+            <option value="Bamboo">Bamboo</option>
+            <option value="Thô">Thô</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Jeans">Jeans</option>           
+        </select>          
+      </div>
       
-    </select>
-   
-  </div>
- 
-<div style="display: flex;">
-<div class="form-group"> 
-    
-    <button type="submit" class="btn btn-success">Tạo mới</button>
-  
-</div>
-<div class="form-group"> 
+      <div class="form-group">
+        <label class="control-label col-sm-4" >Giá nhập:</label>
+        <input name="gianhap" type="" class="form-control"   placeholder="Giá nhập của áo..."></input>       
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" >Giá bán:</label>
+        <input name="giaban" type="" class="form-control"   placeholder="Giá nhập của áo..."></input>       
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" >Trạng thái:</label>
+        <select name="trangthai" style="width: 160px;" class="form-control">           
+            <option value="0">Ẩn</option>
+            <option value="1">Hiện</option>       
+        </select>        
+      </div>
 
-    <a href="list" class="btn btn-info">Quay lại</a>
 
+        <div style="display: flex;">
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-success">Tạo mới</button>
+
+            </div>
+            <div class="form-group">
+
+                <a href="{{route('listIO')}}" class="btn btn-info">Quay lại</a>
+
+            </div>
+        </div>
+
+    </form>
 </div>
-</div>
- 
-</form>
-</div>
+
+
+
+
+
+
+
+
 <style>
-  input,select{
-    font-family: serif;
-  }
+    input,
+    select,textarea {
+        font-family: serif;
+    }
 </style>
 @endsection

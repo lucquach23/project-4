@@ -111,6 +111,36 @@
                                
                                 @endif
                                 <li> Chi tiết chọn size <img style="width: 400px" src="/source/images-shirt/hoa-tiet/size.jpg" alt=""></li>
+                                <li>
+                                    Phương thức thanh toán: <br>
+                                    <input  selected='selected'  type="radio" >
+                                    <label  >Shiping COD</label><br>
+                                    <input disabled name="paymethod" type="radio"  value="female">
+                                    <label >Remittance - Chuyển khoản</label><br>
+                                    <input disabled type="radio" name="paymethod">
+                                    <label for="other">Documentary Credit</label>
+                        <ul class="">
+                            <li class="list-inline-item">
+
+                                 <img src="{{asset('source/images/pay2.png')}}" alt="">
+                            </li>
+                            <li class="list-inline-item">
+                                <img src="{{asset('source/images/pay5.png')}}" alt="">
+                            </li>
+                            <li class="list-inline-item">
+                                <img src="{{asset('source/images/pay3.png')}}" alt="">
+                            </li>
+                            <li class="list-inline-item">
+                                <img src="{{asset('source/images/pay7.png')}}" alt="">
+                            </li>
+                            <li class="list-inline-item">
+                                <img src="{{asset('source/images/pay8.png')}}" alt="">
+                            </li>
+                            <li class="list-inline-item ">
+                                <img src="{{asset('source/images/pay9.png')}}" alt="">
+                            </li>
+                        </ul>
+                                </li>
                             </ul>
                         </div>
                        

@@ -25,7 +25,7 @@
         <div id="clothing-nav-content" class="tab-content py-sm-5">
             <div role="tabpanel" class="tab-pane fade show active" id="women" aria-labelledby="women-tab">
                 <div id="owl-demo" class="owl-carousel text-center">
-                    <table style="width: 1000px;" class="table">
+                    <table style="width: 1100px;" class="table">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>
@@ -100,6 +100,7 @@
                                 <th>Ghi chú</th>
                                 <th>Chi tiết</th>
                                 <th>Trạng thái</th>
+                                <th>Đặt lại</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,32 +111,31 @@
                             <td>{{number_format($i->total_money)}}</td>
                             <td>{{$i->notes}}</td>
                             <td>   
-                          
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Mã SP</th>
-                                        <th>Ảnh</th>
-                                        <th>Số lượng</th>
-                                        <th>Giá</th>
-                                        <th>Size</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($i->order as $or)
-                                    <tr>
-                                    <td>{{$or->id_shirt}}</td>
-                                    <td><img style="width: 50px" src="/source/images-shirt/{{$or->image}}" alt=""></td>
-                                    <td>{{$or->quantity}}</td>
-                                    <td>{{$or->price}}</td>
-                                    <td>{{$or->size}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                                      
-                                </td>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã SP</th>
+                                            <th>Ảnh</th>
+                                            <th>Số lượng</th>
+                                            <th>Giá</th>
+                                            <th>Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($i->order as $or)
+                                        <tr>
+                                        <td>{{$or->id_shirt}}</td>
+                                        <td><img style="width: 50px" src="/source/images-shirt/{{$or->image}}" alt=""></td>
+                                        <td>{{$or->quantity}}</td>
+                                        <td>{{$or->price}}</td>
+                                        <td>{{$or->size}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>          
+                            </td>
                             <td>Đã huỷ</td>
+                        <td><a href="/re_Order/{{$i->id_order}}"><i class="fa fa-arrow-left"></i></a></td>
                             </tr>
                                   @endforeach    
                         </tbody>

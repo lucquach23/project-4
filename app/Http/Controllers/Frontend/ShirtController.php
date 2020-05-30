@@ -38,7 +38,8 @@ class ShirtController extends Controller
     {
         // echo $id;
         // exit;
-        $productCare=DB::table('productcare')->get();
+       //$productCare=DB::table('productcare')->get();
+      $productCare= DB::table('shirt')->inRandomOrder()->limit(4)->get();
         $viewDetail=DB::table('shirt')->where('id_shirt',$id)->get();
         return view('Client.viewDetail',compact('viewDetail','productCare'));
     }

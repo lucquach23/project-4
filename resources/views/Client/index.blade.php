@@ -34,7 +34,7 @@
                 <img class="img-fluid" src="source/images/{{$v->link}}" alt="">
                 <div class="overlay">
                     <h5>{{$v->decription}}</h5>
-                    <a class="info" href="category_shirt/{{$v->url}}">Shop Now</a>
+                    <a class="info" href="listShirt/{{$v->url}}">Shop Now</a>
                 </div>
             </div>
         </div>

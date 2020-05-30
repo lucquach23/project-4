@@ -26,15 +26,93 @@ class IOController extends Controller
         //$str=mt_rand(1,10);
         //dd($str);
     }
+    public function makeSeri()
+    {
+        //$number=mt_rand(1)
+    }
    public function getAddPro_of_IO($id)
    {
-       return view('Admin.IO.addProduct_of_IO',['id'=>$id]);
+    $io=DB::table('import_order')->where('id_import_order',$id)->first();
+    //$name_sup=DB::table('supplier')->where('id',$io->id_supplier)->first();
+    //dd($name_sup->name);    
+    $category=DB::table('category_shirt')->get();
+    $num=mt_rand(1,9999999);
+    $seri="sp-$num";
+    //dd($seri);
+    return view('Admin.IO.addProduct_of_IO',['io'=>$io,'loai'=>$category,'seri'=>$seri]);
    }
-   public function postAddPro_of_IO($id)
+   public function postAddPro_of_IO(Request $req, $id)
    {
-       dd($id);
-       return view('Admin.IO.addProduct_of_IO');
+    $this->validate($req,[
+        'tenao'=>'required|min:4',
+        'mota'=>'required|min:4',
+        'gianhap'=>'required|numeric',
+        'giaban'=>'required|numeric',
+        
+    ],[
+        'tenao.required'=>'Mời nhập tên áo!',
+        'tenao.min'=>'Tên áo tối thiểu 4 kí tự!',
+        'mota.required'=>'Mô tả sản phẩm!',
+        'mota.min'=>'Mô tả quá ngắn!',
+        'gianhap.required'=>'Giá nhập không được để trống!',
+        'gianhap.numeric'=>'Giá nhập phải là số',
+        'giaban.required'=>'Giá bán không được để trống!',
+        'giaban.numeric'=>'Giá bán phải là số',      
+    ]);
+    $shirt=array();
+    $shirt['id_category_shirt']=$req->loaiao;
+    $shirt['id_io']=$req->madonnhap;
+    $shirt['id_supplier']=$req->manhacungcap;  
+    $shirt['seri']=$req->seri;
+    $shirt['name']=$req->tenao;  
+    $shirt['description']=$req->mota;
+    $shirt['image']=$req->anh;  
+    $shirt['size']=$req->size;  
+    $shirt['fabric_material']=$req->chatlieu;  
+    $shirt['price_sell']=$req->gianhap;  
+    $shirt['price_input']=$req->giaban;  
+    $shirt['status']=$req->trangthai;
+    
+    $rs=DB::table('shirt')->insert($shirt); 
+    if($rs)
+    {
+        $io=DB::table('import_order')->where('id_import_order',$id)->first();
+        DB::table('import_order')->update(['quantity'=>$io->quantity+1,'total_money'=>$io->total_money+$req->gianhap]);
+        return back()->with('mess','Thêm thành công');
+    }
+       //dd($id);
+
+      // $io=DB::table('import_order')->where('id_import_order',$id)->first();
+       //dd($id_sup->id_supplier);
+      // return view('Admin.IO.addProduct_of_IO',['io',$io]);
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function getAddIO()
     {
         return view('Admin.IO.addIO');

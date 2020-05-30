@@ -15,6 +15,14 @@
 			<ul>
 				<li>
 					<input type="radio" class="checked" value="0-300000" name="dis" id="dis1">
+					<label for="dis1">Giảm dần</label>
+				</li>
+				<li>
+					<input type="radio" class="checked" value="0-300000" name="dis" id="dis1">
+					<label for="dis1">Tăng dần</label>
+				</li>
+				<li>
+					<input type="radio" class="checked" value="0-300000" name="dis" id="dis1">
 					<label for="dis1">Dưới 300</label>
 				</li>
 				<li>

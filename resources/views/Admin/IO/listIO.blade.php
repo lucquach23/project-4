@@ -36,7 +36,7 @@
               <td>{{$r->name }}</td>
               <td>{{$r->create_date }}</td>
               <td>{{$r->quantity }}</td>
-              <td>{{$r->total_money }}</td>
+              <td>{{number_format($r->total_money) }}</td>
               <th>
                 <a href="viewDetailIO/{{$r->id_import_order}}" style="color:darkorange; font-size:26px;" class="fa fa-eye"
                     aria-hidden="true">

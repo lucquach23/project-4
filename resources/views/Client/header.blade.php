@@ -1,4 +1,8 @@
 <script src="{{asset('source/js/jquery-2.2.3.min.js')}}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <header class="sticky" id="myHeader">
         <div class="container">
             <!-- top nav -->
@@ -22,8 +26,21 @@
                         </li> --}}
                         </li id="li2">
                            @if(Session::has('customer_name')!=null)
-                           <li><a href="{{route('logout')}}">Đăng xuất</a></li>
-                    <li><a href="{{route('order_customer')}}" class="far fa-user"></a></li>
+                                {{-- <li><a href="{{route('logoutcus')}}">Đăng xuất</a></li> --}}
+                                    <li>
+                                     {{-- <a href="{{route('order_customer')}}" class="far fa-user"></a> --}}
+                                     <!-- Example single danger button -->
+                                     <div class="dropdown">
+                                        <button type="button" class="far fa-user btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                         
+                                        </button>
+                                        <div class="dropdown-menu">
+                                          <a class="dropdown-item" href="{{route('order_customer')}}">Đơn hàng của bạn</a>
+                                        <a class="dropdown-item" href="/changeInfo/{{Session::get('customer_id')}}">Thay đổi thông tin</a>
+                                          <a class="dropdown-item" href="{{route('logoutcus')}}">Đăng xuất</a>
+                                        </div>
+                                      </div>
+                                    </li>
                            @else
                            <li id="loginli"><a href="{{route('login_checkout')}}">Đăng nhập</a></li>
                            @endif

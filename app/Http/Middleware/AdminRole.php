@@ -18,12 +18,12 @@ class AdminRole
     public function handle($request, Closure $next)
     {
        
-        if(Session::has('id_account')!=null)
-        {
-            return $next($request);
-        }else{
-            return view('Admin.login');
-        }
+        // if(Session::has('id_account')!=null)
+        // {
+        //     return $next($request);
+        // }else{
+        //     return view('Admin.login');
+        // }
         
     }
 }
