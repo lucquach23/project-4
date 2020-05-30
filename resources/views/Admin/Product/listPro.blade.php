@@ -5,8 +5,8 @@
     <div class="x_title">
       <div class="container">
         <div class="row">
-          <h2 class="col-sm-4">DANH SÁCH TÀI KHOẢN</h2>
-          <div><a  href="addAccount" type="button" class="btn btn-info">THÊM MỚI</a></div>
+          <h2 class="col-sm-4">DANH SÁCH SẢN PHẨM</h2>
+          <div class="col-sm-4"><a href="addNcc" type="button" class="btn btn-info">THÊM MỚI</a></div>
         </div>
         @if(session('mess'))
 
@@ -14,39 +14,35 @@
 
         @endif
 
-        <table id="datatable" class="table table-striped table-bordered bulk_action" style="width:100%">
+        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action" style="width:100%">
           <thead>
             <tr>
-
-              <th>ID Account</th>
-              <th>Username</th>
-              {{-- <th>Password</th> --}}
-              <th>Họ Tên</th>
+              <th>ID NCC</th>
+              <th>Name</th>
+              <th>Địa chỉ</th>            
               <th>Email</th>
-              <th>Quyền</th>
+              <th>Phone</th>
               <th>Delete</th>
               <th>Edit</th>
             </tr>
           </thead>
-
-
           <tbody>
-            @foreach($account as $r)
+            @foreach($ncc as $r)
             <tr>
 
               <td>{{$r->id}}</td>
-              <td>{{$r->user_name }}</td>
-              {{-- <td>{{$r->password }}</td> --}}
-              <td>{{$r->name_of_user }}</td>
+              <td>{{$r->name }}</td>
+              <td>{{$r->address }}</td>
               <td>{{$r->email }}</td>
-              <td>{{($r->role)==1?'admin':'user'}}</td>
+              <td>{{$r->phone }}</td>
+              
               <th>
               
-              <a href="delete/{{$r->id}}" style="color: red; font-size:26px;" class="fa fa-remove"
-                aria-hidden="true">
-              </a>
-             
-            </th>
+                <a href="delete/{{$r->id}}" style="color: red; font-size:26px;" class="fa fa-remove"
+                  aria-hidden="true">
+                </a>
+               
+              </th>
               <th><a href="edit/{{$r->id}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
             </tr>
@@ -59,14 +55,7 @@
 </div>
 </div>
 </div>
-<style>
-  /* label>form-control{
-    height: 31px;
-  } */
-</style>
-<script>
-  //document.getElementById('datatable_info').html('ngu');
-</script>
+
 @endsection
 
 @push('scripts')

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
   <head>
+    <link rel="shortcut icon" type="image/png" href="{{asset('source/images/iconshirt.png')}}"/>
     @include('Admin.head')
   </head>
   <body class="nav-md">
@@ -69,7 +70,7 @@
        @include('Admin.footer')
        @include('Admin.js')
       @stack('scripts')
-    <!-- jQuery -->
+   
    
 	
   </body>

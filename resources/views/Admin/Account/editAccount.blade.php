@@ -32,7 +32,7 @@
   <div class="form-group">
         <label class="control-label col-sm-2" for="">Mật khẩu:</label>
         
-         <input  value="{{$acc->password}}" name="matkhau" type="text" class="form-control" id="" placeholder="Điền mật khẩu">
+         <input  value="" name="matkhau" type="text" class="form-control" id="" placeholder="Điền mật khẩu">
         
   </div>
 
@@ -54,9 +54,9 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="">Quyền :</label>
    
-    <select name="quyen" style="width: 127px;" class="form-control" id="">
-        <option selected="selected">0</option>
-      <option>1</option>
+    <select name="quyen" style="width: 160px;" class="form-control" id="">
+        <option value="0">0 - Nhân viên</option>
+      <option value="1">1 - Admin</option>
       
     </select>
    
@@ -70,11 +70,16 @@
 </div>
 <div class="form-group"> 
 
-    <a href="{{route('list')}}" class="btn btn-info">Quay lại</a>
+    <a href="{{route('listAccount')}}" class="btn btn-info">Quay lại</a>
 
 </div>
 </div>
  
 </form>
 </div>
+<style>
+  input,select{
+    font-family: serif;
+  }
+</style>
 @endsection

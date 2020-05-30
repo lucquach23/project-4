@@ -4,7 +4,7 @@
 
 <form action="{{ route('postLogin') }}" method="post">
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<div  style="box-shadow: 5px 10px 8px 10px #888888" class="login-box">
+<div  style="box-shadow: 5px 10px 8px 10px #888888; width: 380px" class="login-box">
   <div class="login-logo">
     <a href="#"><b >ĐĂNG NHẬP QUẢN TRỊ</a>
   </div>
@@ -26,7 +26,7 @@
 @endif
 @if(session('mess'))
 
-<div class="alert alert-success">{{session('mess')}}</div>
+<div class="alert alert-warning">{{session('mess')}}</div>
 
 @endif
         <div class="input-group mb-3">

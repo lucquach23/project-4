@@ -5,16 +5,15 @@ use App\Model\Account as AppAccount;
 use App\Model\Account;
 use DB;
 use Session;
-use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class HomeAdminController extends Controller
 {
-    public function getLogin()
+    public function home()
     {
-      return  view('Admin.login');
+      return  view('Admin.home');
     }
     // public function postLogin(Request $request)
     // {
@@ -33,30 +32,17 @@ class LoginController extends Controller
         ]);
         $user=$request->un;        
         $pass=md5($request->pw);
-        // if (Auth::attempt(['user_name' => $user, 'password' => $pass]))
-        // {
-        //     return redirect()->route('adminhome');
-        // }
+       
         $rs=DB::table('account')->where('user_name',$user)->where('password',$pass)->first();
         if($rs)
         {
             Session::put('id_account',$rs->id);
             Session::put('name_account',$rs->name_of_user);
-            Session::put('role_account',$rs->role);
-            return redirect()->route('adminhome');
+            return redirect()->route('');
            // dd(Session::get('id_account'));
-        }else
-        {
-            return back()->with('mess','Tên đăng nhập hoặc mật khẩu không đúng');
         }
       
-       // dd($rs);
-    }
-    public function logout()
-    {
-        Session::forget('id_account');
-        Session::forget('name_account');
-        return redirect()->route('getLogin');
+        dd($rs);
     }
     /*
     public function getLogin(Request $request)

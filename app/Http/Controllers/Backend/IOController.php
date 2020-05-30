@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Model\Account as AppAccount;
-use App\Model\Backend\Account;
+//use App\Model\Account as AppAccount;
+//use App\Model\Backend\Account;
 use DB;
 
 use App\Http\Controllers\Controller;
@@ -12,22 +12,34 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\View;
 
-class AccountController extends Controller
+class IOController extends Controller
 {
    
-    public function getList()
+    public function listIO()
     {
+        $rs=DB::table('getlistio')->get();
+        //dd($rs);
         //$account=Account::all()->orderBy('id','desc');
-        $account=DB::table('account')->orderBy('id','desc')->get();
+       // $account=DB::table('account')->orderBy('id','desc')->get();
         //dd($account);
-        return view('Admin.Account.listAccount',['account'=>$account]);
+        return view('Admin.IO.listIO',['io'=>$rs]);
+        //$str=mt_rand(1,10);
+        //dd($str);
     }
-
-    public function addAccount()
+   public function getAddPro_of_IO($id)
+   {
+       return view('Admin.IO.addProduct_of_IO',['id'=>$id]);
+   }
+   public function postAddPro_of_IO($id)
+   {
+       dd($id);
+       return view('Admin.IO.addProduct_of_IO');
+   }
+    public function getAddIO()
     {
-        return view('Admin.Account.addAccount');
+        return view('Admin.IO.addIO');
     }
-    public function PostAddAccount(Request $request)
+    public function PostAddIO(Request $request)
     {
        $this->validate($request,[
            'user_name'=>'required|min:4|max:30|unique:account',

@@ -123,6 +123,7 @@ class CheckoutController extends Controller
     public function order_customer()
     {
         $id_cus=Session::get('customer_id');
+       // $ord_cus=DB::table('_order')->where('id_customer',$id_cus)->where('status',1)
        $ord_cus=DB::select('call getOrderCustomer(?)',[$id_cus]);
        foreach($ord_cus as $i)
        {

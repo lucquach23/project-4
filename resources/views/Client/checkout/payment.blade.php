@@ -125,7 +125,8 @@
                           @if(session('mess'))
 
                             <div class="alert alert-success">{{session('mess')}}</div>
-                            <h4><a href="{{route('listShirt')}}">Tiếp tục mua hàng</a></h4>
+                            <h3><a href="{{route('listShirt')}}">Tiếp tục mua hàng</a></h3>
+                            <h3><a href="{{route('order_customer')}}"></a></h3>
                         @else
                             <h4>Chi tiết đặt hàng</h4>
                         <form action="{{route('postpayment')}}" method="post" class="creditly-card-form shopf-sear-headinfo_form">

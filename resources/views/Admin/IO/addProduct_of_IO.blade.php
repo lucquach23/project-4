@@ -18,14 +18,15 @@
   <div class="alert alert-success">{{session('mess')}}</div>
 
 @endif
+{{-- action="/postAddPro_of_IO/{{$id}}" --}}
 </div>
-<form action="addAccount" method="post" class="form-horizontal">
+<form  action="{{$id}}" method="post" class="form-horizontal">
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<h3>Thêm tài khoản</h3>
+<h3>Thêm sản phẩm</h3>
     <div class="form-group">
         <label class="control-label col-sm-4" >Tên đăng nhập:</label>
         
-         <input name="user_name" type="" class="form-control  id="" placeholder="Điền tên đăng nhập">
+         <input name="user_name" type="" class="form-control" placeholder="Điền tên đăng nhập">
         
   </div>
 

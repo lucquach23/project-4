@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
-use Closure;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Session;
-class AdminRole
+use Closure;
+
+class check
 {
     /**
      * Handle an incoming request.
@@ -15,15 +13,14 @@ class AdminRole
      * @param  \Closure  $next
      * @return mixed
      */
+    
     public function handle($request, Closure $next)
     {
-       
-        if(Session::has('id_account')!=null)
-        {
-            return $next($request);
-        }else{
-            return view('Admin.login');
+        if (Session::has('id_account') != null) {
+
+            return response($next($request));
+        } else {
+            return response(redirect()->route('getLogin'));
         }
-        
     }
 }

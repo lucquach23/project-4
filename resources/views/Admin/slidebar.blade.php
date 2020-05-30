@@ -2,24 +2,28 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i>Đơn đặt hàng<span class="fa fa-chevron-down"></span></a>
+                <li><a href="{{route('listproduct')}}"><i class="fa fa-list"></i>Sản phẩm <span ></span></a>
+                  <li><a><i class="fa fa-shopping-cart"></i>Đơn hàng<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Chi tiết đơn đặt</a></li>
-                      <!-- <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li> -->
+                    <li><a href="">Đơn đặt</a></li>
+                    <li><a href="#">Đơn đã xác nhận</a></li>
+                      <li><a href="index3.html">Đơn đang gửi</a></li>
+                      <li><a href="index3.html">Đơn huỷ</a></li>
+                      <li><a href="index3.html">Đơn đã thanh toán</a></li>
+
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Đơn nhập hàng<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">Chi tiết đơn nhập</a></li>
+                  <li><a href="{{route('listIO')}}"><i class="fa fa-edit"></i> Đơn nhập hàng<span class="fa fa-chevron-down"></span></a>
+                    {{-- <ul class="nav child_menu">
+                      <li><a href="">Chi tiết đơn nhập</a></li> --}}
                       <!-- <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>
                       <li><a href="form_upload.html">Form Upload</a></li>
                       <li><a href="form_buttons.html">Form Buttons</a></li> -->
-                    </ul>
+                    {{-- </ul> --}}
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Khách hàng<span ></span></a>
+                  <li><a><i class="fa fa-male"></i> Khách hàng<span ></span></a>
                     <!-- <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -47,7 +51,7 @@
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-clone"></i>Layouts <span ></span></a>
+                  
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>

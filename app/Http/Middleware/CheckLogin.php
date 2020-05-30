@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Session;
-class AdminRole
+use App\Http\Middleware\VerifyCsrfToken;
+class CheckLogin
 {
     /**
      * Handle an incoming request.
