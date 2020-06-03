@@ -1,45 +1,38 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
-//use App\Model\Account as AppAccount;
-//use App\Model\Backend\Account;
 use DB;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-
 use Illuminate\Support\Facades\View;
+use Session;
+
 
 class IOController extends Controller
 {
-   
+    public function viewDetailIO($id)
+    {
+        Session::forget('allshirt');
+       $viewDIO=DB::table('shirt')->where('id_io',$id)->get();
+       return view('Admin.Product.listPro',['view'=>$viewDIO]);
+    }
     public function listIO()
     {
-        $rs=DB::table('getlistio')->get();
-        //dd($rs);
-        //$account=Account::all()->orderBy('id','desc');
-       // $account=DB::table('account')->orderBy('id','desc')->get();
-        //dd($account);
+        $rs=DB::table('import_order')->get();
+       
         return view('Admin.IO.listIO',['io'=>$rs]);
-        //$str=mt_rand(1,10);
-        //dd($str);
     }
-    public function makeSeri()
-    {
-        //$number=mt_rand(1)
-    }
+  
    public function getAddPro_of_IO($id)
    {
     $io=DB::table('import_order')->where('id_import_order',$id)->first();
-    //$name_sup=DB::table('supplier')->where('id',$io->id_supplier)->first();
-    //dd($name_sup->name);    
+    $sup=DB::table('supplier')->get();
+   
     $category=DB::table('category_shirt')->get();
     $num=mt_rand(1,9999999);
     $seri="sp-$num";
-    //dd($seri);
-    return view('Admin.IO.addProduct_of_IO',['io'=>$io,'loai'=>$category,'seri'=>$seri]);
+   
+    return view('Admin.IO.addProduct_of_IO',['io'=>$io,'loai'=>$category,'seri'=>$seri,'sup'=>$sup]);
    }
    public function postAddPro_of_IO(Request $req, $id)
    {
@@ -62,7 +55,7 @@ class IOController extends Controller
     $shirt=array();
     $shirt['id_category_shirt']=$req->loaiao;
     $shirt['id_io']=$req->madonnhap;
-    $shirt['id_supplier']=$req->manhacungcap;  
+    $shirt['id_supplier']=$req->ncc;  
     $shirt['seri']=$req->seri;
     $shirt['name']=$req->tenao;  
     $shirt['description']=$req->mota;
@@ -77,45 +70,28 @@ class IOController extends Controller
     if($rs)
     {
         $io=DB::table('import_order')->where('id_import_order',$id)->first();
-        DB::table('import_order')->update(['quantity'=>$io->quantity+1,'total_money'=>$io->total_money+$req->gianhap]);
+        DB::table('import_order')->where('id_import_order',$id)->update(['quantity'=>$io->quantity+1,'total_money'=>$io->total_money+$req->gianhap]);
         return back()->with('mess','Thêm thành công');
     }
-       //dd($id);
-
-      // $io=DB::table('import_order')->where('id_import_order',$id)->first();
-       //dd($id_sup->id_supplier);
-      // return view('Admin.IO.addProduct_of_IO',['io',$io]);
+      
    }
 
+   public function GetAddPro()
+   {
+       return view('Admin.Product.addPro');
+   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function getAddIO()
+    public function AddIO()
     {
-        return view('Admin.IO.addIO');
+        $arr=array();
+        $arr['create_date']=date('y-m-d');
+        $arr['quantity']=0;
+        $arr['total_money']=0;
+        $rs=DB::table('import_order')->insert($arr);
+        if($rs)
+        {
+            return back()->with('mess','Tạo thành công!');
+        }
     }
     public function PostAddIO(Request $request)
     {
@@ -151,19 +127,14 @@ class IOController extends Controller
 
     public function getEdit($id)
     {
-        //$acc=DB::table('account')->where('id_account',$id)->get()->toArray();
-       $acc= Account::find($id);    //   print_r($acc);
-    //   foreach($acc as $ac)
-    //   {
-        // print_r($acc);
-    //   }
-      //echo $acc->user_name;
-    return view('Admin.Account.EditAccount',['acc'=>$acc]);
+        
+       $acc= Account::find($id);    
+        return view('Admin.Account.EditAccount',['acc'=>$acc]);
     
     }
     public function postEdit(Request $request,$id)
     {
-        //$acc=DB::table('account')->where('id_account',$id)->get()->toArray();
+     
         
         $this->validate($request,[
             'tendangnhap'=>'required|min:4|max:20',
@@ -191,7 +162,7 @@ class IOController extends Controller
         $acc->email=$request->email;
         $acc->role=$request->quyen;
         $acc->save();
-        //return redirect('admin/account/list')->with('mess','Sửa thành công!');
+        
         return redirect()->route('listAccount')->with('mess','Sửa thành công!');
     }
     public function deleteAccount($id)

@@ -18,13 +18,13 @@
           <thead>
             <tr>
               <th>Mã IO</th>
-              <th>Nhà cung cấp</th>
+              {{-- <th>Nhà cung cấp</th> --}}
               <th>Ngày tạo</th>            
               <th>Tổng nhập</th>
               <th>Tổng tiền</th>
               <th>Xem chi tiết</th>
               <th>Thêm sản phẩm</th>
-              <th>Delete</th>
+              {{-- <th>Delete</th> --}}
               <th>Edit</th>
             </tr>
           </thead>
@@ -33,7 +33,7 @@
             <tr>
 
               <td>{{$r->id_import_order}}</td>
-              <td>{{$r->name }}</td>
+              {{-- <td>{{$r->name }}</td> --}}
               <td>{{$r->create_date }}</td>
               <td>{{$r->quantity }}</td>
               <td>{{number_format($r->total_money) }}</td>
@@ -42,18 +42,18 @@
                     aria-hidden="true">
               </th>
               <th>
-                <a href="addProduct_of_IO/{{$r->id_import_order}}" style="color:blue; font-size:26px;" class="fa fa-arrow-right"
+                <a href="addProduct_of_IO/{{$r->id_import_order}}" style="color:chartreuse; font-size:26px;" class="fa fa-plus"
                     aria-hidden="true">
               </th>
               </th>
               
-              <th>
+              {{-- <th>
               
                 <a href="delete/{{$r->id_import_order}}" style="color: red; font-size:26px;" class="fa fa-remove"
                   aria-hidden="true">
                 </a>
                
-              </th>
+              </th> --}}
               <th><a href="edit/{{$r->id_import_order}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
             </tr>

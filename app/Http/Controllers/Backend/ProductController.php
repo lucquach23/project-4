@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Session;
 
 
 
@@ -22,95 +23,73 @@ class ProductController extends Controller
 
     public function listproduct()
     {
-        //$ncc=DB::table('viewlistncc')->get();
-       // $ncc=ncc::all()->sortBy('id');
-        // print_r($ncc);
-        // exit;
-       // return view('Admin.ncc.listNcc',['ncc'=>$ncc]);
+
+        $shirt=DB::table('shirt')->get();
+        Session::put('allshirt','allshirt');
+
+        
+       return view('Admin.Product.listPro',['view'=>$shirt]);
     }
 
     public function GetAddPro()
     {
         return view('Admin.ncc.addNcc');
     }
-    public function PostAddPro(Request $request)
+    public function PostEditPro(Request $req,$id)
     {
-       $this->validate($request,[
-           'ten'=>'required|min:4|max:30',
-           'diachi'=>'required|min:4|max:20',
-           'sdt'=>'required',
-           'email'=>'required'
-          
-       ],[
-           'ten.required'=>'Mời nhập tên nhà cung cấp!',
-           'ten.min'=>'Tên nhà cung cấp tối thiểu 4 kí tự và tối đa 30 kí tự!',
-           'ten.max'=>'Tên nhà cung cấp tối thiểu 4 kí tự và tối đa 30 kí tự!',
-           'diachi.required'=>'Mời nhập địa chỉ!',
-           'diachi.min'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 10 kí tự!',
-           'diachi.max'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 10 kí tự!',
-           'phone.required'=>'Mời nhập số điện thoại liên hệ!',
-           'email.required'=>'Mời nhập email!'
-           
-
-       ]);
-       $acc=new ncc;
-       $acc->name=$request->ten;
-       $acc->address=$request->diachi;
-        $acc->email=$request->email;
-       $acc->phone=$request->sdt;
-       $acc->save();
-       return redirect('admin/ncc/addNcc')->with('mess','Thêm thành công!');
+        $this->validate($req,[
+            'tenao'=>'required|min:4',
+            'mota'=>'required|min:4',
+            'gianhap'=>'required|numeric',
+            'giaban'=>'required|numeric',
+            
+        ],[
+            'tenao.required'=>'Mời nhập tên áo!',
+            'tenao.min'=>'Tên áo tối thiểu 4 kí tự!',
+            'mota.required'=>'Mô tả sản phẩm!',
+            'mota.min'=>'Mô tả quá ngắn!',
+            'gianhap.required'=>'Giá nhập không được để trống!',
+            'gianhap.numeric'=>'Giá nhập phải là số',
+            'giaban.required'=>'Giá bán không được để trống!',
+            'giaban.numeric'=>'Giá bán phải là số',      
+        ]);
+        $shirt=array();
+        $shirt['id_category_shirt']=$req->loaiao;
+        $shirt['id_io']=$req->madonnhap;
+        $shirt['id_supplier']=$req->ncc;  
+        $shirt['seri']=$req->seri;
+        $shirt['name']=$req->tenao;  
+        $shirt['description']=$req->mota;
+        $shirt['image']=$req->anh;  
+        $shirt['size']=$req->size;  
+        $shirt['fabric_material']=$req->chatlieu;  
+        $shirt['price_sell']=$req->gianhap;  
+        $shirt['price_input']=$req->giaban;  
+        $shirt['status']=$req->trangthai;
+        $rs=DB::table('shirt')->where('id_shirt',$id)->update($shirt); 
+        if($rs){
+            return redirect()->route('listproduct')->with('mess','Cập nhật thành công!');
+        }
     }
 
-    public function getEditPro($id_supplier)
+    public function getEditPro($id)
     {
-        //$acc=DB::table('account')->where('id_account',$id)->get()->toArray();
-      $acc= ncc::find($id_supplier);    //   print_r($acc);
-      //$acc=DB::table('supplier')->where('id_supplier', $id)->get();
-    //   foreach($acc as $ac)
-    //   {
-        // print_r($acc);
-    //   }
-      //echo $acc->user_name;
-    return view('Admin.ncc.editNcc',['acc'=>$acc]);
+        $shirt=DB::table('shirt')->where('id_shirt',$id)->first();
+        //$io=DB::table('import_order')->where('id_import_order',$id)->first();
+        $sup=DB::table('supplier')->get();
+       
+        $category=DB::table('category_shirt')->get();
+       
+       
+        return view('Admin.Product.editPro',['loai'=>$category,'sup'=>$sup,'shirt'=>$shirt]);
+        //return view('Admin.ncc.editNcc',['shirt'=>$shirt]);
     
     }
-    public function postEditPro(Request $request,$id)
-    {
-        //$acc=DB::table('account')->where('id_account',$id)->get()->toArray();
-        
-        $this->validate($request,[
-            'ten'=>'required|min:4|max:30',
-            'diachi'=>'required|min:4|max:20',
-            'sdt'=>'required|max:10',
-            'email'=>'required'
-           
-        ],[
-            'ten.required'=>'Mời nhập tên nhà cung cấp!',
-            'ten.min'=>'Tên nhà cung cấp tối thiểu 4 kí tự và tối đa 30 kí tự!',
-            'ten.max'=>'Tên nhà cung cấp tối thiểu 4 kí tự và tối đa 30 kí tự!',
-            'diachi.required'=>'Mời nhập địa chỉ!',
-            'diachi.min'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 10 kí tự!',
-            'diachi.max'=>'Địa chỉ tối thiểu 4 kí tự và tối đa 10 kí tự!',
-            'sdt.required'=>'Mời nhập số điện thoại liên hệ!',
-            'email.required'=>'Mời nhập email!',
-            'sdt.max'=>'Số điện thoại tối đa 10 số'
-            
- 
-        ]);
-        $acc=ncc::find($id);
-        $acc->name=$request->ten;
-        $acc->address=$request->diachi;
-        $acc->email=$request->email;
-        $acc->phone=$request->sdt;
-        $acc->save();
-        return redirect('admin/ncc/list')->with('mess','Sửa thành công!');
-    }
+   
     public function getDeletePro($id)
     {
-        $acc=ncc::find($id);
-        $acc->delete();
-    //    $acc=DB::table('supplier')->where('id_supplier', $id)->delete();
-        return redirect('admin/ncc/list')->with('mess','Xoá thành công!');
+       
+        DB::table('shirt')->where('id_shirt', $id)->delete();
+        return back()->with('mess','Xoá thành công!');
     }
 }

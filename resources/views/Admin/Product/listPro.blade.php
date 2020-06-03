@@ -6,7 +6,10 @@
       <div class="container">
         <div class="row">
           <h2 class="col-sm-4">DANH SÁCH SẢN PHẨM</h2>
-          <div class="col-sm-4"><a href="addNcc" type="button" class="btn btn-info">THÊM MỚI</a></div>
+          @if(Session('allshirt'))
+          <div class="col-sm-4"><a href="{{route('getaddpro')}}" type="button" class="btn btn-info">THÊM MỚI</a></div>
+          @else <div></div>
+          @endif
         </div>
         @if(session('mess'))
 
@@ -17,33 +20,40 @@
         <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action" style="width:100%">
           <thead>
             <tr>
-              <th>ID NCC</th>
-              <th>Name</th>
-              <th>Địa chỉ</th>            
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Delete</th>
+              <th>Mã IO</th>
+              <th>Tên</th>
+              <th>Seri</th>            
+              <th>Mô tả</th>
+              <th>Ảnh</th>
+              <th>Size</th>
+              <th>Chất liệu</th>
+              <th>Giá nhập</th>
+              <th>Giá bán</th>
               <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($ncc as $r)
+            @foreach($view as $r)
             <tr>
 
-              <td>{{$r->id}}</td>
+              <td>{{$r->id_io}}</td>
               <td>{{$r->name }}</td>
-              <td>{{$r->address }}</td>
-              <td>{{$r->email }}</td>
-              <td>{{$r->phone }}</td>
-              
+              <td>{{$r->seri }}</td>
+              <td>{{$r->description }}</td>
+              <td><img style="width: 50px" src="/source/images-shirt/{{$r->image}}"></td>
+              <td>{{$r->size}}</td>
+              <td>{{$r->fabric_material }}</td>
+              <td>{{number_format($r->price_input) }}</td>
+              <td>{{number_format($r->price_sell) }}</td>
               <th>
               
-                <a href="delete/{{$r->id}}" style="color: red; font-size:26px;" class="fa fa-remove"
+                <a href="deletePro/{{$r->id_shirt}}" style="color: red; font-size:26px;" class="fa fa-remove"
                   aria-hidden="true">
                 </a>
                
               </th>
-              <th><a href="edit/{{$r->id}}" style="color: green; font-size:26px;" class="fa fa-wrench"
+              <th><a href="editPro/{{$r->id_shirt}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
             </tr>
             @endforeach

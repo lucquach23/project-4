@@ -30,8 +30,12 @@
                     value="{{$io->id_import_order}}">
             </div>
             <div style="margin-right: 50px;margin-left: 50px">
-                <label class="control-label ">Mã nhà cung cấp:</label>
-                <input name="manhacungcap" type="" class="form-control" value="{{$io->id_supplier}}"></input>
+                <label class="control-label col-sm-8" for="">Nhà cung cấp</label>      
+                <select name="ncc" style="width: 160px;" class="form-control">
+                    @foreach($sup as $s)
+                    <option value="{{$s->id}}">{{$s->name}}</option>
+                    @endforeach
+                </select>   
             </div>
             <div>
                 <label class="control-label ">Ngày:</label>

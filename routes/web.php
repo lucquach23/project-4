@@ -94,7 +94,7 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 	//PRODUCT
 	route::group(['prefix'=>'product'],function(){
 		route::get('listproduct','ProductController@listproduct')->name('listproduct');
-		route::get('AddPro','ProductController@GetAddPro');
+		route::get('AddPro','ProductController@GetAddPro')->name('getaddpro');
 		route::post('AddPro','ProductController@PostAddPro');
 		route::get('editPro/{id}','ProductController@getEditPro');
 		route::post('editPro/{id}','ProductController@postEditPro');
@@ -104,12 +104,12 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 	//IO
 	route::group(['prefix'=>'IO'],function(){
 		route::get('listIO','IOController@listIO')->name('listIO');
-		route::get('AddIO','IOController@GetAddIO')->name('addIO');
-		route::post('AddPro','IOController@PostAddIO');
+		route::get('AddIO','IOController@AddIO')->name('addIO');
+		//route::post('AddPro','IOController@PostAddIO');
 		route::get('editPro/{id}','IOController@getEditPro');
 		route::post('editPro/{id}','IOController@postEditPro');
 		route::get('deletePro/{id}','IOController@getDeletePro');
-
+		route::get('/viewDetailIO/{id}','IOController@viewDetailIO');
 
 		route::get('addProduct_of_IO/{id}','IOController@getAddPro_of_IO');
 		route::post('addProduct_of_IO/{id}','IOController@postAddPro_of_IO')->name('postAddPro_of_IO');
