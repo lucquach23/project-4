@@ -113,8 +113,8 @@
                                 <li> Chi tiết chọn size <img style="width: 400px" src="/source/images-shirt/hoa-tiet/size.jpg" alt=""></li>
                                 <li>
                                     Phương thức thanh toán: <br>
-                                    <input  selected='selected'  type="radio" >
-                                    <label  >Shiping COD</label><br>
+                                    <input  checked  type="radio" >
+                                    <label  >COD (Free Shiping)</label><br>
                                     <input disabled name="paymethod" type="radio"  value="female">
                                     <label >Remittance - Chuyển khoản</label><br>
                                     <input disabled type="radio" name="paymethod">

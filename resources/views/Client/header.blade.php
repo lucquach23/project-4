@@ -1,4 +1,4 @@
-<script src="{{asset('source/js/jquery-2.2.3.min.js')}}"></script>
+{{-- <script src="{{asset('source/js/jquery-2.2.3.min.js')}}"></script> --}}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -15,21 +15,12 @@
                 <!-- //logo -->
                 <div class="w3ls_right_nav ml-auto d-flex" style="float: right">
                     <ul id="menutopheader" style="display: flex;">
-                        {{-- <li id="li1">
-                            <form action="#">
-                                <input  style="cursor:text; border: 1px solid #64b3f4;" placeholder="Search..."  class="btn btn-outline-suesscess" type="text" >
-                                <button style="background-color: white;
-                                border: none;
-                                color: #64b3f4;
-                                font-size: 22px; cursor: pointer;" class="fa fa-search" href="#" id="btnsearch"></button>
-                            </form>
-                        </li> --}}
+                        
                         </li id="li2">
                            @if(Session::has('customer_name')!=null)
-                                {{-- <li><a href="{{route('logoutcus')}}">Đăng xuất</a></li> --}}
+                                
                                     <li>
-                                     {{-- <a href="{{route('order_customer')}}" class="far fa-user"></a> --}}
-                                     <!-- Example single danger button -->
+                                    
                                      <div class="dropdown">
                                         <button type="button" class="far fa-user btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                          
@@ -90,8 +81,8 @@
                                      
                                      <!--Footer-->
                                      <div class="modal-footer">
-                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                                         <a href="/ListCart" class="btn btn-primary">Checkout</a>
+                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Đóng</button>
+                                         <a href="/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
                                      </div>
                                      </div>
                                  </div>
@@ -135,10 +126,10 @@
                         </li>
                         <li class="nav-item dropdown has-mega-menu">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="listShirt" role="button" aria-haspopup="true" aria-expanded="false">Men's clothing</a>
-                            <div class="dropdown-menu" style="width:0%">
+                            <div class="dropdown-menu" style="">
                                 <div class="px-0 container">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             @foreach($loai_sp as $loai)
                                             <a class="dropdown-item" href="/listShirt/{{$loai->id_category_shirt}}">{{$loai->description}}</a>
                                             @endforeach
@@ -173,7 +164,6 @@
     #navbarSupportedContent>ul>li{
         margin-right: 50px;
     }
-
     .fixed {
         
     position: fixed;
@@ -184,38 +174,17 @@
     }
   
 </style>
-<!-- <script>
-	function AddCart(id_shirt){
-		$.ajax({
-			url: 'Add-Cart/'+id_shirt,
-			type: 'GET'
-		}).done(function(response){
-			console.log(response);
-			$("#change-item-cart").empty();
-			$("#change-item-cart").html(response);
-			  // success notification
-				// Shorthand for:
-				// alertify.notify( message, 'success', [wait, callback]);
-				alertify.success('Đã thêm sản phẩm vào giỏ hàng!');
-		});
-	}
-</script> -->
+{{-- 
 <script>
     $(window).scroll(function(){
   if ($(window).scrollTop() >= 330) {
     $('.sticky').addClass('fixed');
-   //document.getElementById("li1").style.visibility = "hidden";
-   // document.getElementById("li2").style.visibility = "hidden";
-    //$('$li1').style.visibility = "hidden";
-//$('$li2').style.visibility = "hidden";
    }
    else {
     $('.sticky').removeClass('fixed');
-   // ocument.getElementById("li1").style.display="block";
-   // document.getElementById("li2").style.display="block";
    }
 });
-</script>
+</script> --}}
 <style>
     #menutopheader>li{
         padding-right: 20px;

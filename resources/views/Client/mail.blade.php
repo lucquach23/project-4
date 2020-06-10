@@ -1,0 +1,1 @@
+hi kjsbafsva{{$id_customer}}

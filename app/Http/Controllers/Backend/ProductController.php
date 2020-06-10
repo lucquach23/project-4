@@ -23,6 +23,8 @@ class ProductController extends Controller
 
     public function listproduct()
     {
+       // $rs=DB::table('gs')->get();
+       // dd($rs);
 
         $shirt=DB::table('shirt')->get();
         Session::put('allshirt','allshirt');

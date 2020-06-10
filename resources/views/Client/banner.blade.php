@@ -1,48 +1,52 @@
+
 <div class="banner-text">
-        <div style="margin-top: 44px;" class="callbacks_container">
-            <ul class="rslides" id="slider3">
+    <div class="callbacks_container">
+        <div class="container my-4">
 
-            @foreach( $slidee  as $sll)
-            <li style="background: url(source/images/{{$sll->link}}) -354px no-repeat" class="banner">
-                    <!-- <img  src="{{asset('source/images/bn1.jpg')}}" alt=""> -->
-                    <div class="container">
-                        <h3 class="agile_btxt">
-                            <span>f</span>ashion
-                            <span>M</span>en
-                        </h3>
-                        <h4 class="w3_bbot">shop exclusive clothing</h4>
-                        <div class="slider-info mt-sm-5">
-                            <h4 class="bn_right">
-                                <span>{{$sll->decription}}</span>
-                                </h4>
-                            <div class="bnr_clip position-relative">
-                                <h4>get up to
-                                    <span class="px-2">45% </span>
-                                </h4>
-                                <div class="d-inline-flex flex-column banner-pos position-absolute text-center">
-                                    <div class="bg-flex-item">
-                                        <span>O</span>
-                                    </div>
-                                    <div class="bg-flex-item">
-                                        <span>F</span>
-                                    </div>
-                                    <div class="bg-flex-item">
-                                        <span>F
-                                        </span>
-                                    </div>
-                                </div>
-                                <p class="text-uppercase py-2">on special sale</p>
-                                <a class="btn btn-primary mt-3 text-capitalize" href="shop.html" role="button">shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            
-
-            @endforeach
-
-               
-            </ul>
-        </div>
+            <!--Carousel Wrapper-->
+            <div id="carousel-example-1z" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+              <!--Indicators-->
+              <ol class="carousel-indicators">
+                {{-- <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li> --}}
+              </ol>
+              <!--/.Indicators-->
+              <!--Slides-->
+              <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="source/images/banner1.png" alt="First slide">
+                </div>
+                <!--/First slide-->
+                <!--Second slide-->
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="source/images/banner2.png" alt="Second slide">
+                </div>
+                <!--/Second slide-->
+                <!--Third slide-->
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="source/images/banner3.png" alt="Third slide">
+                </div>
+                <!--/Third slide-->
+              </div>
+              <!--/.Slides-->
+              <!--Controls-->
+              <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+              <!--/.Controls-->
+            </div>
+            <!--/.Carousel Wrapper-->
+        
+           
+            <!--/.Carousel Wrapper-->
+        
+          </div>
     </div>
-   
+</div>

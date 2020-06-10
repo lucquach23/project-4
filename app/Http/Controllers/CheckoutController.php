@@ -8,6 +8,7 @@ session_start();
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Mail;
 //use Symfony\Component\HttpFoundation\Session\Session;
 use App\Model\Order;
 use App\Model\Order_Detail;
@@ -124,6 +125,7 @@ class CheckoutController extends Controller
     {
        //$cart=Session::get('Cart');
         //dd($cart);
+        //dd()
         $this->validate($req,[
             'name_ship'=>'required|min:4|max:30',
             'sdt_ship'=>'required|min:10|max:10',
@@ -159,6 +161,12 @@ class CheckoutController extends Controller
             $order_detail->image=$value['productInfo']->image;
             $order_detail->save();
         }
+        // dd($req);
+       // $data=$cart->toArray();
+        Mail::send('Client.mail',$arrOrder,function($mes){
+            $mes->from('hoangluc1002@gmail.com','Quách Lực');
+            $mes->to('bvnam98@gmail.com')->subject('Thông tin đơn hàng');
+        });
         Session::forget('Cart');
         return back()->with('mess',"Đặt hàng thành công. Vui lòng chú ý điện thoại, sẽ có nhân viên check lại đơn hàng của bạn ^_^");
     }

@@ -113,9 +113,30 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 
 		route::get('addProduct_of_IO/{id}','IOController@getAddPro_of_IO');
 		route::post('addProduct_of_IO/{id}','IOController@postAddPro_of_IO')->name('postAddPro_of_IO');
-		//addProduct_of_IO/{{$r->id_import_order}}
+		
 	});
-	
+	route::group(['prefix'=>'order'],function(){
+		route::get('list_order','OderController@list_order')->name('list_order');
+		route::get('confirm_order/{id}','OderController@confirm_order');
+
+		route::get('list_order_confirmed','OderController@list_order_confirmed')->name('listOrderConfirmed');
+		route::get('confirmed_to_shiping/{id}','OderController@confirmed_to_shiping');
+
+
+		route::get('list_order_shiping','OderController@list_order_shiping')->name('listOrderShiping');
+		route::get('shiping_to_paymented/{id}','OderController@shiping_to_paymented');
+		
+		route::get('list_order_paymented','OderController@list_order_paymented')->name('listOrderPaymented');
+
+		route::get('list_order_distroyed','OderController@list_order_distroyed')->name('listOrderDistroyed');
+
+		route::get('distroy_order/{id}','OderController@distroy_order');
+
+
+
+
+		
+	});
 		
 });
 route::get('/login','Backend\LoginController@getLogin')->name('getLogin');

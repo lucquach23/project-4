@@ -14,13 +14,13 @@ class check
      * @return mixed
      */
     
-    // public function handle($request, Closure $next)
-    // {
-    //     if (Session::has('id_account') != null) {
+    public function handle($request, Closure $next)
+    {
+        if (Session::has('id_account') != null) {
 
-    //         return response($next($request));
-    //     } else {
-    //         return response(redirect()->route('getLogin'));
-    //     }
-    // }
+            return response($next($request));
+        } else {
+            return response(redirect()->route('getLogin'));
+        }
+    }
 }
