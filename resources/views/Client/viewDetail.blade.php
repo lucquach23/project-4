@@ -21,7 +21,7 @@
 		</ol>
     </nav>
     @foreach($viewDetail as $vd)
-    <div class="innerf-pages section py-5">
+    <div style="margin-top: -86px;"class="innerf-pages section py-5">
         <div class="container">
             <div class="row my-sm-5">
             <div class="col-lg-4 single-right-left">

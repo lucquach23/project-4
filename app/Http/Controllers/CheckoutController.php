@@ -123,9 +123,18 @@ class CheckoutController extends Controller
     }
     public function postpayment(Request $req)
     {
+        //$listShirt=DB::select('call discount(?)',[$dis]);
+        // $t=DB::select('call get_info_cus_mail(?)',[Session::get('customer_id')]);
+        // dd($t);
        //$cart=Session::get('Cart');
         //dd($cart);
-        //dd()
+        // $cart=Session::get('Cart');
+        // foreach($cart->products as $key=>$value)
+        // {
+        //     dd($value['productInfo']['image']);
+        // }
+        //dd($cart->products);
+        //dd($req->email_ship);
         $this->validate($req,[
             'name_ship'=>'required|min:4|max:30',
             'sdt_ship'=>'required|min:10|max:10',
@@ -148,7 +157,11 @@ class CheckoutController extends Controller
         $arrOrder['payment_method']="COD";
         $arrOrder['date_order']=date('Y-m-d');
         $arrOrder['notes']=$req->note_ship;
-        $arrOrder['status']=1;      
+        $arrOrder['status']=1;
+        $arrOrder['name_ship']=$req->name_ship;
+        $arrOrder['address_ship']=$req->address_ship;
+        $arrOrder['phone_ship']=$req->sdt_ship;
+        $arrOrder['email_ship']=$req->email_ship;
         $id_order=DB::table('_order')->insertGetId($arrOrder);             
         foreach($cart->products as $key=>$value)
         {
@@ -161,15 +174,64 @@ class CheckoutController extends Controller
             $order_detail->image=$value['productInfo']->image;
             $order_detail->save();
         }
-        // dd($req);
-       // $data=$cart->toArray();
-        Mail::send('Client.mail',$arrOrder,function($mes){
+       
+       $email_ship=$req->email_ship;
+       $info=DB::select('call get_info_cus_mail(?,?)',[Session::get('customer_id'), $id_order]);
+       $arrInfo=array();
+       foreach($info as $i)
+       {
+           $arrInfo['name']=$req->name;
+           $arrInfo['diachi']=$req->address;
+           $arrInfo['email']=$req->email;
+           $arrInfo['sdt']=$req->phone;
+           $arrInfo['tongtien']=$i->total_money;
+           $arrInfo['ngaydat']=$i->date_order;
+       }
+       //dd($arrInfo);
+     // $arrInfo=array();
+      //$arrInfo['name']=$info->name;
+     
+       Mail::send('Client.mail',$arrInfo ,function($mes) use ($email_ship){
+          ;
             $mes->from('hoangluc1002@gmail.com','Quách Lực');
-            $mes->to('bvnam98@gmail.com')->subject('Thông tin đơn hàng');
+            $mes->to($email_ship)->subject('THÔNG TIN ĐƠN HÀNG');
         });
         Session::forget('Cart');
         return back()->with('mess',"Đặt hàng thành công. Vui lòng chú ý điện thoại, sẽ có nhân viên check lại đơn hàng của bạn ^_^");
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     public function order_customer()
     {
         $id_cus=Session::get('customer_id');

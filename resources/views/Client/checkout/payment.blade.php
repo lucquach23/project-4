@@ -175,6 +175,10 @@
                                                         <label class="control-label">Số điện thoại:</label>
                                                         <input required class="form-control" name="sdt_ship" type="text" placeholder="Mobile number">
                                                     </div>
+                                                    <div class="controls">
+                                                        <label class="control-label">Email:</label>
+                                                        <input required class="form-control" name="email_ship" type="email" placeholder="example@gmail.com">
+                                                    </div>
                                                 </div>
                                                 <div class="card_number_grid_right">
                                                     <div class="controls">
