@@ -119,22 +119,14 @@ class CheckoutController extends Controller
     }
     public function getpayment()
     {
-        return view('Client.checkout.payment');
+       // Session::put('customer_id', $rs->id_customer);
+        $info_cus=DB::table('customer')->where('id_customer',Session::get('customer_id'))->first();
+        //dd($info_cus);
+        return view('Client.checkout.payment',['info_cus'=>$info_cus]);
     }
     public function postpayment(Request $req)
     {
-        //$listShirt=DB::select('call discount(?)',[$dis]);
-        // $t=DB::select('call get_info_cus_mail(?)',[Session::get('customer_id')]);
-        // dd($t);
-       //$cart=Session::get('Cart');
-        //dd($cart);
-        // $cart=Session::get('Cart');
-        // foreach($cart->products as $key=>$value)
-        // {
-        //     dd($value['productInfo']['image']);
-        // }
-        //dd($cart->products);
-        //dd($req->email_ship);
+        //dd($req->name)
         $this->validate($req,[
             'name_ship'=>'required|min:4|max:30',
             'sdt_ship'=>'required|min:10|max:10',
@@ -180,10 +172,10 @@ class CheckoutController extends Controller
        $arrInfo=array();
        foreach($info as $i)
        {
-           $arrInfo['name']=$req->name;
-           $arrInfo['diachi']=$req->address;
-           $arrInfo['email']=$req->email;
-           $arrInfo['sdt']=$req->phone;
+           $arrInfo['name']=$req->name_ship;
+           $arrInfo['diachi']=$req->address_ship;
+           $arrInfo['email']=$req->email_ship;
+           $arrInfo['sdt']=$req->sdt_ship;
            $arrInfo['tongtien']=$i->total_money;
            $arrInfo['ngaydat']=$i->date_order;
        }

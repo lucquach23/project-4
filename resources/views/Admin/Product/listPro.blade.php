@@ -66,9 +66,13 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary"> 
-                          <a href="deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a>
-                        </button>
+                        {{-- <button type="button" class="btn btn-primary">  --}}
+                          @if(Session('getViewDetail')!=null)
+                          <a class="btn btn-primary" href="viewDetailIO/deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a>
+                          @else
+                          <a class="btn btn-primary" href="deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a>
+                          @endif
+                          {{-- </button> --}}
                       </div>
                     </div>
                   </div>

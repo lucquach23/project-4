@@ -13,6 +13,7 @@ class IOController extends Controller
     public function viewDetailIO($id)
     {
         Session::forget('allshirt');
+        Session::put('getViewDetail');
        $viewDIO=DB::table('shirt')->where('id_io',$id)->get();
        return view('Admin.Product.listPro',['view'=>$viewDIO]);
     }
@@ -62,8 +63,8 @@ class IOController extends Controller
     $shirt['image']=$req->anh;  
     $shirt['size']=$req->size;  
     $shirt['fabric_material']=$req->chatlieu;  
-    $shirt['price_sell']=$req->gianhap;  
-    $shirt['price_input']=$req->giaban;  
+    $shirt['price_sell']=$req->giaban;  
+    $shirt['price_input']=$req->gianhap;  
     $shirt['status']=$req->trangthai;
     
     $rs=DB::table('shirt')->insert($shirt); 
@@ -93,82 +94,12 @@ class IOController extends Controller
             return back()->with('mess','Tạo thành công!');
         }
     }
-    public function PostAddIO(Request $request)
+   
+    public function getDeleteIO($id)
     {
-       $this->validate($request,[
-           'user_name'=>'required|min:4|max:30|unique:account',
-           'matkhau'=>'required|min:4|max:20',
-           'hoten'=>'required',
-           'email'=>'required|unique:account',
-           'quyen'=>'required'
-       ],[
-           'user_name.required'=>'Mời nhập tên đăng nhập!',
-           'user_name.unique'=>'Tên đăng nhập đã tồn tại!',
-           'user_name.min'=>'Tên đăng nhập tối thiểu 4 kí tự và tối đa 30 kí tự!',
-           'user_name.max'=>'Tên đăng nhập tối thiểu 4 kí tự và tối đa 30 kí tự!',
-           'matkhau.required'=>'Mời nhập mật khẩu!',
-           'matkhau.min'=>'Mật khẩu tối thiểu 4 kí tự và tối đa 10 kí tự!',
-           'matkhau.max'=>'Mật khẩu tối thiểu 4 kí tự và tối đa 10 kí tự!',
-           'hoten.required'=>'Mời nhập họ tên người sử dụng!',
-           'email.unique'=>'Email đã được sử dụng!',
-           'email.required'=>'Nhập email!',
-           'quyen.required'=>'Yêu cầu chọn quyền!',
-
-       ]);
-       $acc=new Account;
-       $acc->user_name=$request->user_name;
-       $acc->password=md5($request->matkhau);
-       $acc->name_of_user=$request->hoten;
-       $acc->email=$request->email;
-       $acc->role=$request->quyen;
-       $acc->save();
-       return redirect('admin/account/addAccount')->with('mess','Thêm thành công!');
+       
+        DB::table('import_order')->where('id_import_order', $id)->delete();
+        return back()->with('mess','Xoá thành công!');
     }
-
-    public function getEdit($id)
-    {
-        
-       $acc= Account::find($id);    
-        return view('Admin.Account.EditAccount',['acc'=>$acc]);
-    
-    }
-    public function postEdit(Request $request,$id)
-    {
-     
-        
-        $this->validate($request,[
-            'tendangnhap'=>'required|min:4|max:20',
-            'matkhau'=>'required|min:4|max:20',
-            'hoten'=>'required',
-            'email'=>'required',
-            'quyen'=>'required'
-        ],[
-            'tendangnhap.required'=>'Mời nhập tên đăng nhập!',
-            'tendangnhap.min'=>'Tên đăng nhập tối thiểu 4 kí tự và tối đa 20 kí tự!',
-            'tendangnhap.max'=>'Tên đăng nhập tối thiểu 4 kí tự và tối đa 20 kí tự!',
-            'matkhau.required'=>'Mời nhập mật khẩu!',
-            'matkhau.min'=>'Mật khẩu tối thiểu 4 kí tự và tối đa 10 kí tự!',
-            'matkhau.max'=>'Mật khẩu tối thiểu 4 kí tự và tối đa 10 kí tự!',
-            'hoten.required'=>'Mời nhập họ tên người sử dụng!',
-            'email.required'=>'Mời nhập email!',
-            'quyen.required'=>'Yêu cầu chọn quyền!',
- 
-        ]);
-        $acc= Account::find($id);  
-        $acc->user_name=$request->tendangnhap;
-       // $acc->user_name =>'unique:account';
-        $acc->password=md5($request->matkhau);
-        $acc->name_of_user=$request->hoten;
-        $acc->email=$request->email;
-        $acc->role=$request->quyen;
-        $acc->save();
-        
-        return redirect()->route('listAccount')->with('mess','Sửa thành công!');
-    }
-    public function deleteAccount($id)
-    {
-        $acc= Account::find($id); 
-        $acc->delete();
-        return redirect('admin/account/list')->with('mess','Xoá thành công!');
-    }
+   
 }

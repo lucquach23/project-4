@@ -3,6 +3,7 @@
   <head>
     <link rel="shortcut icon" type="image/png" href="{{asset('source/images/iconshirt.png')}}"/>
     @include('Admin.head')
+    
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -72,6 +73,6 @@
       @stack('scripts')
    
    
-	
+     
   </body>
 </html>

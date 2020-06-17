@@ -24,14 +24,22 @@ route::get('/contact',function(){
 route::get('listShirt','Frontend\ShirtController@listShirt')->name('listShirt');
 route::get('listShirt/{id}','Frontend\ShirtController@typeShirt');
 route::get('detail/{id}','Frontend\ShirtController@ViewDetail');
+// route::post('/discount','Frontend\ShirtController@discount')->name('discount');
+// route::post('/material','Frontend\ShirtController@material')->name('material');
+// route::post('/PriceRange','Frontend\ShirtController@PriceRange')->name('PriceRange');
+// route::post('/searchcus','Frontend\ShirtController@searchcus')->name('searchcus');
+
+
 route::post('/discount','Frontend\ShirtController@discount')->name('discount');
+route::get('/discount','Frontend\ShirtController@listShirt');
+
+route::post('/PriceRange','Frontend\ShirtController@PriceRange')->name('PriceRange');
+route::get('/PriceRange','Frontend\ShirtController@listShirt');
+
 route::post('/material','Frontend\ShirtController@material')->name('material');
 route::post('/PriceRange','Frontend\ShirtController@PriceRange')->name('PriceRange');
 route::post('/searchcus','Frontend\ShirtController@searchcus')->name('searchcus');
-
-
-
-
+route::get('/searchcus','Frontend\ShirtController@listShirt');
 
 
 
@@ -105,15 +113,13 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 	route::group(['prefix'=>'IO'],function(){
 		route::get('listIO','IOController@listIO')->name('listIO');
 		route::get('AddIO','IOController@AddIO')->name('addIO');
-		//route::post('AddPro','IOController@PostAddIO');
-		route::get('editPro/{id}','IOController@getEditPro');
-		route::post('editPro/{id}','IOController@postEditPro');
-		route::get('deletePro/{id}','IOController@getDeletePro');
+		
+		route::get('deleteIO/{id}','IOController@getDeleteIO');
 		route::get('/viewDetailIO/{id}','IOController@viewDetailIO');
 
 		route::get('addProduct_of_IO/{id}','IOController@getAddPro_of_IO');
 		route::post('addProduct_of_IO/{id}','IOController@postAddPro_of_IO')->name('postAddPro_of_IO');
-		
+		route::get('viewDetailIO/deletePro/{id}','ProductController@getDeletePro');
 	});
 	route::group(['prefix'=>'order'],function(){
 		route::get('list_order','OderController@list_order')->name('list_order');

@@ -1,5 +1,6 @@
 @extends('Admin.app')
 @section('content')
+
 <div style="width:500px;" class="container">
     <div class="row">
         @if(count($errors)>0)
@@ -58,12 +59,18 @@
             @foreach($loai as $l)
             <option value="{{$l->id_category_shirt}}">{{$l->id_category_shirt}} - {{$l->description}}</option>
             @endforeach
-        </select>      
+        </select>    
+       
     </div>
-      <div class="form-group">
-        <label class="control-label col-sm-4" >Mô tả:</label>
-        <textarea name="mota" type="" class="form-control"   placeholder="Mô tả về áo..."></textarea>       
-      </div>
+    <div style="width: 759px;" class="form-group">
+        Mô tả
+        <textarea style="resize: none;position: relative;" rows="3" name="mota"  class="form-control col-lg-12" id="ckeditor1" ></textarea> 
+    </div>
+    
+     
+        
+              
+      
     
       <div class="form-group">
             <label class="control-label col-sm-4" for="">Ảnh </label>

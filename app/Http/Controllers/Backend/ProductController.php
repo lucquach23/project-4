@@ -90,7 +90,9 @@ class ProductController extends Controller
    
     public function getDeletePro($id)
     {
-       
+        $shirt=DB::table('shirt')->where('id_shirt',$id)->first();
+        $io=DB::table('import_order')->where('id_import_order',$shirt->id_io)->first();
+        DB::table('import_order')->where('id_import_order',$shirt->id_io)->update(['quantity'=>$io->quantity-1,'total_money'=>$io->total_money-$shirt->price_input]);
         DB::table('shirt')->where('id_shirt', $id)->delete();
         return back()->with('mess','Xoá thành công!');
     }

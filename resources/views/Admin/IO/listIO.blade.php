@@ -21,11 +21,11 @@
               {{-- <th>Nhà cung cấp</th> --}}
               <th>Ngày tạo</th>            
               <th>Tổng nhập</th>
-              <th>Tổng tiền</th>
+              <th>Tổng tiền nhập</th>
               <th>Xem chi tiết</th>
               <th>Thêm sản phẩm</th>
               {{-- <th>Delete</th> --}}
-              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -45,17 +45,44 @@
                 <a href="addProduct_of_IO/{{$r->id_import_order}}" style="color:chartreuse; font-size:26px;" class="fa fa-plus"
                     aria-hidden="true">
               </th>
-              </th>
+             
               
-              {{-- <th>
-              
-                <a href="delete/{{$r->id_import_order}}" style="color: red; font-size:26px;" class="fa fa-remove"
+                {{-- <a href="delete/{{$r->id_import_order}}" style="color: red; font-size:26px;" class="fa fa-remove"
                   aria-hidden="true">
-                </a>
-               
-              </th> --}}
-              <th><a href="edit/{{$r->id_import_order}}" style="color: green; font-size:26px;" class="fa fa-wrench"
-                  aria-hidden="true"></a></th>
+                </a> --}}
+                <th>
+                  <i type="button" style="color: red; font-size:26px;" class="fa fa-remove" data-toggle="modal" data-target="#exampleModal">
+                   
+                  </i>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">XOÁ ĐƠN NHẬP</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Khi xoá các sản phẩm trong đơn sẽ xoá theo, bạn có chắc muốn xoá?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                          {{-- <button type="button" class="btn btn-primary">  --}}
+                          <a class="btn btn-primary" href="deleteIO/{{$r->id_import_order}}" aria-hidden="true">Xoá</a>
+                          {{-- </button> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                 
+                </th>
+              </th>
+              {{-- <th><a href="edit/{{$r->id_import_order}}" style="color: green; font-size:26px;" class="fa fa-times"
+                  aria-hidden="true"></a></th> --}}
             </tr>
             @endforeach
           </tbody>

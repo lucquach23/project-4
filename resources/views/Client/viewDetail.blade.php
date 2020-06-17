@@ -33,7 +33,7 @@
                                         <img src="/source/images-shirt/{{$vd->image}}" data-imagezoom="true" alt=" " class="img-fluid"> </div>
                                 </li>
                                 <li>
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    {{-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div style="margin-top: 20px; border: 1px solid" class="carousel-inner">
                                           <div class="carousel-item active">
                                             <img class="d-block " style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
@@ -45,7 +45,7 @@
                                             <img class="d-block "style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
                                           </div>
                                         </div>
-                                      </div>
+                                      </div> --}}
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -117,6 +117,13 @@
                                 <li>
                                     <span>Fit :</span> Slim, Muscle
                                 </li>
+                                <li>
+                                    <div class="occasion-cart">
+                                        <div class="chr single-item single_page_b">
+                                        <a style="font-size: 30px" class="fa fa-cart-plus" href="javaScript:" onclick="AddCart({{$vd->id_shirt}})"> <span style="font-size: 22px;color:#5BBD2B">Thêm vào giỏ hàng</span></a>
+                                        </div>
+                                    </div>
+                                </li>
                               
                             </ul>
 
@@ -145,11 +152,7 @@
                             <input type="submit" value="Check">
                         </form>
                     </div> -->
-                    <div class="occasion-cart">
-                        <div class="chr single-item single_page_b">
-                        <a style="font-size: 30px" class="fa fa-cart-plus" href="javaScript:" onclick="AddCart({{$vd->id_shirt}})"> <span style="font-size: 22px;">Thêm vào giỏ hàng</span></a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

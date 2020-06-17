@@ -38,3 +38,8 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('lib/build/js/custom.min.js')}}"></script>
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript">
+      // CKEDITOR.replace('ckeditor');
+      CKEDITOR.replace('ckeditor1');
+    </script>
