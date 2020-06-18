@@ -79,19 +79,115 @@
 
             <div role="tabpanel" class="tab-pane fade" id="men" aria-labelledby="men-tab">
                 <div id="owl-demo1" class="owl-carousel text-center">
-                    <div>đơn hàng đang giao</div>
+                    <table style="width: 1100px;" class="table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Ghi chú</th>
+                                <th>Chi tiết</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($od_shiping_cus as $i)
+                            <tr>
+                            <td>{{$i->id_order}}</td>
+                            <td>{{$i->date_order}}</td>
+                            <td>{{number_format($i->total_money)}}</td>
+                            <td>{{$i->notes}}</td>
+                            <td>   
+                          
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã SP</th>
+                                        <th>Ảnh</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Size</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($i->order as $or)
+                                    <tr>
+                                    <td>{{$or->id_shirt}}</td>
+                                    <td><img style="width: 50px" src="/source/images-shirt/{{$or->image}}" alt=""></td>
+                                    <td>{{$or->quantity}}</td>
+                                    <td>{{$or->price}}</td>
+                                    <td>{{$or->size}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                                      
+                                </td>
+                           
+                            </tr>
+                                  @endforeach    
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <div role="tabpanel" class="tab-pane fade" id="girl" aria-labelledby="girl-tab">
                 <div id="owl-demo2" class="owl-carousel text-center">
-                    <div>đơn hàng đã thanh toán</div>
+                    <table style="width: 1100px;" class="table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Ghi chú</th>
+                                <th>Chi tiết</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($or_paymented_cus as $i)
+                            <tr>
+                            <td>{{$i->id_order}}</td>
+                            <td>{{$i->date_order}}</td>
+                            <td>{{number_format($i->total_money)}}</td>
+                            <td>{{$i->notes}}</td>
+                            <td>   
+                          
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã SP</th>
+                                        <th>Ảnh</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Size</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($i->order as $or)
+                                    <tr>
+                                    <td>{{$or->id_shirt}}</td>
+                                    <td><img style="width: 50px" src="/source/images-shirt/{{$or->image}}" alt=""></td>
+                                    <td>{{$or->quantity}}</td>
+                                    <td>{{$or->price}}</td>
+                                    <td>{{$or->size}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                                      
+                                </td>
+                           
+                            </tr>
+                                  @endforeach    
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <div role="tabpanel" class="tab-pane fade" id="boy" aria-labelledby="boy-tab">
                 <div id="owl-demo3" class="owl-carousel text-center">
-                    <table style="width: 1100px;" >
+                    <table  style="width: 1100px;" >
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>

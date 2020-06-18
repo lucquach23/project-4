@@ -29,7 +29,12 @@ class ProductController extends Controller
         $shirt=DB::table('shirt')->get();
         Session::put('allshirt','allshirt');
 
-        
+        foreach($shirt as $i)
+       {
+           $vd=DB::table('quantity_size')->where('id_shirt',$i->id_shirt)->get();
+           $i->detail_quanti_size = $vd;
+       }
+      // dd($shirt['detail_quanti_size']['size']);
        return view('Admin.Product.listPro',['view'=>$shirt]);
     }
 

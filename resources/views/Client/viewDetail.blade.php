@@ -32,21 +32,11 @@
                                     <div class="thumb-image">
                                         <img src="/source/images-shirt/{{$vd->image}}" data-imagezoom="true" alt=" " class="img-fluid"> </div>
                                 </li>
-                                <li>
-                                    {{-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                        <div style="margin-top: 20px; border: 1px solid" class="carousel-inner">
-                                          <div class="carousel-item active">
-                                            <img class="d-block " style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
-                                          </div>
-                                          <div class="carousel-item">
-                                            <img class="d-block "style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
-                                          </div>
-                                          <div class="carousel-item">
-                                            <img class="d-block "style="width: 268px; height: 200px;" src="/source/images-shirt/{{$vd->image}}">
-                                          </div>
-                                        </div>
-                                      </div> --}}
+                                
+                                <li style="margin-top: 30px">Chi tiết chọn Size
+                                   
                                 </li>
+                                <li> <img style="width: 320px" src="/source/images-shirt/size.jpg" alt=""></li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -87,10 +77,10 @@
                         <div class="clearfix"> </div>
                         <h6>{{number_format($vd->price_sell)}} VNĐ</h6>
                     </div>
-                    <div class="desc_single">
+                    {{-- <div class="desc_single">
                         <h5>Trạng thái: {{$vd->quantity_has>0?'Còn hàng':'Hết hàng'}}</h5>
                         
-                    </div>
+                    </div> --}}
                     <div class="desc_single">
                         <h5>Màu: Như trong ảnh</h5>
                         
@@ -118,9 +108,9 @@
                                     <span>Fit :</span> Slim, Muscle
                                 </li>
                                 <li>
-                                    <div class="occasion-cart">
+                                    <div  style=" margin-top: 31px;"   class="occasion-cart">
                                         <div class="chr single-item single_page_b">
-                                        <a style="font-size: 30px" class="fa fa-cart-plus" href="javaScript:" onclick="AddCart({{$vd->id_shirt}})"> <span style="font-size: 22px;color:#5BBD2B">Thêm vào giỏ hàng</span></a>
+                                        <a style="font-size: 30px" class="fa fa-cart-plus" href="javaScript:" onclick="AddCart({{$vd->id_shirt}})"> <span style="font-size: 22px;color:#5BBD2B">Add to Cart</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -129,19 +119,41 @@
 
                         </div>
                         <div class="color-quality mt-sm-0 mt-4">
-                            <h5 class="sp_title mb-3">Dịch vụ</h5>
+                            <h5 class="">Dịch vụ</h5>
                             <ul class="single_serv">
+                                <li>
+                                    <a href="#">30 Day Return Policy</a>
+                                </li>
                                 
                                 <li>
                                     <a href="#">Hoàn trả sản phẩm trong 30 ngày nếu không đúng mô tả</a>
                                 </li>
                                 <li class="mt-2">
-                                    <a href="#">Services 30 Day Return Policy</a>
+                                    <a href="#">Nếu có yêu cầu khác về size vui lòng liên hệ</a>
                                 </li>
-                                <li>Chi tiết chọn Size
+                                <li ><a style="color: blue" href="#">1900.2309.99</a> or <a style="color: blue" href="https://www.facebook.com/luc.quach.18">Quách Lực</a></li>
+                                <li >
                                    
+                                    <table class="table"> 
+                                        <thead>
+                                          <tr>
+                                            <th>Size</th>
+                                            <th>Số lượng</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($quanti_size as $q) 
+                                          <tr>
+                                          <td>{{$q->size}}</td>
+                                          <td>{{$q->quantity}}</td><i class="fa fa-yoast" aria-hidden="true"></i>
+                                          </tr>
+                                          @endforeach
+                                        </tbody>
+                                      </table>
                                 </li>
-                                <li> <img style="width: 400px" src="/source/images-shirt/hoa-tiet/size.jpg" alt=""></li>
+                                
+                                
                             </ul>
                         </div>
                     </div>
@@ -172,7 +184,7 @@
                     <div class="col-lg-3 col-sm-6 p-0">
                         <div class="card product-men p-3">
                             <div class="men-thumb-item">
-                                <img style="height: 244px" src="/source/images-shirt/{{$pc->image}}" alt="img" class="card-img-top">
+                                <img style="height: 260px" src="/source/images-shirt/{{$pc->image}}" alt="img" class="card-img-top">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="/detail/{{$pc->id_shirt}}" class="link-product-add-cart">View Detail</a>

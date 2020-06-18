@@ -15,6 +15,12 @@ class IOController extends Controller
         Session::forget('allshirt');
         Session::put('getViewDetail');
        $viewDIO=DB::table('shirt')->where('id_io',$id)->get();
+       
+       foreach($viewDIO as $i)
+       {
+           $vd=DB::table('quantity_size')->where('id_shirt',$i->id_shirt)->get();
+           $i->detail_quanti_size = $vd;
+       }
        return view('Admin.Product.listPro',['view'=>$viewDIO]);
     }
     public function listIO()
@@ -30,13 +36,15 @@ class IOController extends Controller
     $sup=DB::table('supplier')->get();
    
     $category=DB::table('category_shirt')->get();
-    $num=mt_rand(1,9999999);
-    $seri="sp-$num";
+    //$num=mt_rand(1,9999999);
+   // $seri="sp-$num";
    
-    return view('Admin.IO.addProduct_of_IO',['io'=>$io,'loai'=>$category,'seri'=>$seri,'sup'=>$sup]);
+    return view('Admin.IO.addProduct_of_IO',['io'=>$io,'loai'=>$category,'sup'=>$sup]);
    }
    public function postAddPro_of_IO(Request $req, $id)
    {
+    $tongsl=$req->sl_S+$req->sl_XS+$req->sl_L+$req->sl_M+$req->sl_XL+$req->sl_XXL;
+    //dd($tongsl);
     $this->validate($req,[
         'tenao'=>'required|min:4',
         'mota'=>'required|min:4',
@@ -57,23 +65,30 @@ class IOController extends Controller
     $shirt['id_category_shirt']=$req->loaiao;
     $shirt['id_io']=$req->madonnhap;
     $shirt['id_supplier']=$req->ncc;  
-    $shirt['seri']=$req->seri;
+    // $shirt['seri']=$req->seri;
     $shirt['name']=$req->tenao;  
     $shirt['description']=$req->mota;
     $shirt['image']=$req->anh;  
-    $shirt['size']=$req->size;  
+    // $shirt['size']=$req->size;  
     $shirt['fabric_material']=$req->chatlieu;  
     $shirt['price_sell']=$req->giaban;  
     $shirt['price_input']=$req->gianhap;  
     $shirt['status']=$req->trangthai;
     
-    $rs=DB::table('shirt')->insert($shirt); 
-    if($rs)
-    {
+    $id_shirt=DB::table('shirt')->insertGetId($shirt); 
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_S,$req->sl_S]);
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_XS,$req->sl_XS]);
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_L,$req->sl_L]);
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_M,$req->sl_M]);
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_XL,$req->sl_XL]);
+    DB::insert('insert into quantity_size (id_shirt,size,quantity) values (?, ?,?)', [$id_shirt, $req->size_XXL,$req->sl_XXL]);
+    
+    // if($rs)
+    // {
         $io=DB::table('import_order')->where('id_import_order',$id)->first();
-        DB::table('import_order')->where('id_import_order',$id)->update(['quantity'=>$io->quantity+1,'total_money'=>$io->total_money+$req->gianhap]);
+        DB::table('import_order')->where('id_import_order',$id)->update(['quantity'=>$io->quantity+$tongsl,'total_money'=>$io->total_money+$req->gianhap*$tongsl]);
         return back()->with('mess','Thêm thành công');
-    }
+   // }
       
    }
 

@@ -20,12 +20,13 @@
         <table id="datatable-checkbox" class="table table-striped table-bordered" style="width:100%">
           <thead>
             <tr>
+              <th>Mã áo</th>
               <th>Mã IO</th>
               <th>Tên</th>
-              <th>Seri</th>            
+              {{-- <th>Seri</th>             --}}
               {{-- <th>Mô tả</th> --}}
               <th>Ảnh</th>
-              <th>Size</th>
+              <th>Size - SL</th>
               <th>Chất liệu</th>
               <th>Giá nhập</th>
               <th>Giá bán</th>
@@ -36,50 +37,39 @@
           <tbody>
             @foreach($view as $r)
             <tr>
-
+            <td>{{$r->id_shirt}}</td>
               <td>{{$r->id_io}}</td>
               <td>{{$r->name }}</td>
-              <td>{{$r->seri }}</td>
+              {{-- <td>{{$r->seri }}</td> --}}
               {{-- <td>{{$r->description }}</td> --}}
               <td><img style="width: 50px" src="/source/images-shirt/{{$r->image}}"></td>
-              <td>{{$r->size}}</td>
+              <td>
+                <table >
+                  
+                    <tr>
+                      <th>S</th>
+                      <th>XS</th>
+                      <th>L</th>
+                      <th>M</th>
+                      <th>XL</th>
+                      <th>XXL</th>
+                    </tr>
+                  
+                  
+                    @foreach($r->detail_quanti_size as $d)
+                    
+                    <td>{{$d->quantity}}</td>
+                      
+                    
+                   @endforeach
+                  
+                </table>
+              </td>
               <td>{{$r->fabric_material }}</td>
               <td>{{number_format($r->price_input) }}</td>
               <td>{{number_format($r->price_sell) }}</td>
-              <th>
-                <i type="button" style="color: red; font-size:26px;" class="fa fa-remove" data-toggle="modal" data-target="#exampleModal">
-                 
-                </i>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">XOÁ SẢN PHẨM</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Bạn có chắc muốn xoá sản phẩm này
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        {{-- <button type="button" class="btn btn-primary">  --}}
-                          @if(Session('getViewDetail')!=null)
-                          <a class="btn btn-primary" href="viewDetailIO/deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a>
-                          @else
-                          <a class="btn btn-primary" href="deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a>
-                          @endif
-                          {{-- </button> --}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-               
-              </th>
+              
+              <th><a class="btn btn-primary" href="deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a></th>
               <th><a href="editPro/{{$r->id_shirt}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
             </tr>

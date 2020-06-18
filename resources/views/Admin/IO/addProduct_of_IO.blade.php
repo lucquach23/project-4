@@ -42,10 +42,10 @@
                 <label class="control-label ">Ngày:</label>
                 <input name="ngay" type="" class="form-control" value="{{$io->create_date}}">
             </div>
-            <div>
+            {{-- <div>
                 <label class="control-label ">Seri:</label>
                 <input name="seri" type="" class="form-control" value="{{$seri}}">
-            </div>
+            </div> --}}
         </div>
 
        
@@ -78,10 +78,32 @@
              <input name="anh" type="file">
          
       </div>
-    
+    Size - Số lượng
       <div  class="form-group">
-        <label class="control-label col-sm-2" for="email">Size:</label>
-        <select name="size" style="width: 160px;" class="form-control">           
+        
+        <div id="size-quan" style="display: block">
+               <div> <input style="width: 50px" type="text" name="size_S" value="S">  <input required type="text" name="sl_S"></div>
+               <div><input style="width: 50px" type="text" name="size_XS"value="XS">  <input required type="text" name="sl_XS"></div>
+                <div> <input style="width: 50px" type="text" name="size_L"value="L">  <input required type="text" name="sl_L"></div>
+                <div><input style="width: 50px" type="text" name="size_M"value="M">  <input required type="text" name="sl_M"></div>
+                <div><input style="width: 50px" type="text" name="size_XL"value="XL">  <input required type="text" name="sl_XL"></div>
+                <div><input style="width: 50px" type="text" name="size_XXL"value="XXL">  <input required type="text" name="sl_XXL"></div>
+               
+        </div>
+               
+               <style>
+                   #size-quan>div{
+                       padding-top: 5px;
+                       padding-bottom: 5px;
+                   }
+               </style>
+               
+                
+               
+               
+                
+              
+        {{-- <select name="size" style="width: 160px;" class="form-control">           
             <option value="S">S</option>
             <option value="XS">XS</option>
             <option value="L">L</option>
@@ -89,7 +111,7 @@
             <option value="XL">XL</option>
             <option value="XXL">XXL</option>
             <option value="XXXL">XXXL</option>           
-        </select>          
+        </select>           --}}
       </div>
       <div  class="form-group">
         <label class="control-label col-sm-2" for="email">Chất Liệu:</label>

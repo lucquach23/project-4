@@ -41,7 +41,9 @@ class ShirtController extends Controller
        //$productCare=DB::table('productcare')->get();
       $productCare= DB::table('shirt')->inRandomOrder()->limit(4)->get();
         $viewDetail=DB::table('shirt')->where('id_shirt',$id)->get();
-        return view('Client.viewDetail',compact('viewDetail','productCare'));
+        $quanti_size=DB::table('quantity_size')->where('id_shirt',$id)->get();
+        //dd($quanti_size);
+        return view('Client.viewDetail',['viewDetail'=>$viewDetail,'productCare'=>$productCare,'quanti_size'=>$quanti_size]);
     }
     public function discount(Request $req){
         //$a=(600-(600*20)/100)/100;

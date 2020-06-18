@@ -189,7 +189,7 @@ class CheckoutController extends Controller
             $mes->to($email_ship)->subject('THÔNG TIN ĐƠN HÀNG');
         });
         Session::forget('Cart');
-        return back()->with('mess',"Đặt hàng thành công. Vui lòng chú ý điện thoại, sẽ có nhân viên check lại đơn hàng của bạn ^_^");
+        return back()->with('mess',"Đặt hàng thành công! Vui lòng check email và chú ý điện thoại, sẽ có nhân viên check lại đơn hàng của bạn ^_^");
     }
 
 
@@ -241,9 +241,22 @@ class CheckoutController extends Controller
         $i->order = $vd;
        }
 
-       return view('Client.order_management',['ord_cus'=>$ord_cus,'ordis'=>$order_distroyed]);
+       $ord_shiping_cus=DB::select('call get_order_shiping_cus(?)',[$id_cus]);
+       foreach($ord_shiping_cus as $i)
+       {
+           $vd=DB::select('call getdetailorder(?)',[$i->id_order]);
+           $i->order = $vd;
+       }
+       $ord_paymented_cus=DB::select('call get_order_paymented_cus(?)',[$id_cus]);
+       foreach($ord_paymented_cus as $i)
+       {
+           $vd=DB::select('call getdetailorder(?)',[$i->id_order]);
+           $i->order = $vd;
+       }
+       return view('Client.order_management',['or_paymented_cus'=>$ord_paymented_cus,'ord_cus'=>$ord_cus,'ordis'=>$order_distroyed,'od_shiping_cus'=>$ord_shiping_cus]);
         
     }
+    
   public function distroy_order_cus($id_order)
   {
       DB::table('_order')->where('id_order',$id_order)->update(['status'=>4]);

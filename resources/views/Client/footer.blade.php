@@ -30,7 +30,7 @@
                             <div class="footer-v2grid1 row">
                                 <div class="col-4 footer-v2grid1-left">
                                     <a href="blog.html">
-                                        <img src="{{asset('source/images-shirt/hoa-tiet/ht4.jpg')}}" alt=" " class="img-fluid">
+                                        <img src="{{asset('source/images-shirt/ht4.jpg')}}" alt=" " class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
@@ -40,7 +40,7 @@
                             <div class="footer-v2grid1 row my-2">
                                 <div class="col-4 footer-v2grid1-left">
                                     <a href="blog.html">
-                                        <img src="{{asset('source/images-shirt/hoa-tiet/ht6.jpg')}}" alt=" " class="img-fluid">
+                                        <img src="{{asset('source/images-shirt/ht6.jpg')}}" alt=" " class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
@@ -50,7 +50,7 @@
                             <div class="footer-v2grid1 row">
                                 <div class="col-4 footer-v2grid1-left">
                                     <a href="blog.html">
-                                        <img src="{{asset('source/images-shirt/hoa-tiet/ht9.jpg')}}" alt=" " class="img-fluid">
+                                        <img src="{{asset('source/images-shirt/ht9.jpg')}}" alt=" " class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
@@ -91,33 +91,33 @@
                             </h4>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht1.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht1.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht2.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht2.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht3.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht3.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht5.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht5.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
 
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht6.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht6.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
-                                    <img src="{{asset('source/images-shirt/hoa-tiet/ht7.jpg')}}" alt=" " class="img-fluid">
+                                    <img src="{{asset('source/images-shirt/ht7.jpg')}}" alt=" " class="img-fluid">
                                 </a>
                             </div>
                            
