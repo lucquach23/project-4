@@ -36,7 +36,7 @@
                     <option value="M">M</option>
                     <option value="XL">XL</option>
                     <option value="XXL">XXL</option>
-                    <option value="XXXL">XXXL</option>
+                    {{-- <option value="XXXL">XXXL</option> --}}
                 </select>
                 </td>
                 

@@ -119,8 +119,37 @@
 
                         </div>
                         <div class="color-quality mt-sm-0 mt-4">
-                            <h5 class="">Dịch vụ</h5>
+                            <h5 class="">Sẵn có</h5>
                             <ul class="single_serv">
+                                
+                                
+                                <li >
+                                    <table  style="border: 1px solid #ccc; width: 315px" >
+                  
+                                        <tr>
+                                          <th>S</th>
+                                          <th>XS</th>
+                                          <th>L</th>
+                                          <th>M</th>
+                                          <th>XL</th>
+                                          <th>XXL</th>
+                                        </tr>
+                                      
+                                      
+                                        @foreach($quanti_size as $q) 
+                                        
+                                        <td>{{$q->quantity}}</td>
+                                          
+                                        
+                                       @endforeach
+                                      
+                                    </table>
+                                   
+                                </li>
+                                <li class="mt-2">
+                                    <a href="#">Nếu có yêu cầu khác về size vui lòng liên hệ</a>
+                                </li>
+                                <li ><a style="color: blue" href="#">1900.2309.99</a> or <a style="color: blue" href="https://www.facebook.com/luc.quach.18">Quách Lực</a></li>
                                 <li>
                                     <a href="#">30 Day Return Policy</a>
                                 </li>
@@ -128,32 +157,6 @@
                                 <li>
                                     <a href="#">Hoàn trả sản phẩm trong 30 ngày nếu không đúng mô tả</a>
                                 </li>
-                                <li class="mt-2">
-                                    <a href="#">Nếu có yêu cầu khác về size vui lòng liên hệ</a>
-                                </li>
-                                <li ><a style="color: blue" href="#">1900.2309.99</a> or <a style="color: blue" href="https://www.facebook.com/luc.quach.18">Quách Lực</a></li>
-                                <li >
-                                   
-                                    <table class="table"> 
-                                        <thead>
-                                          <tr>
-                                            <th>Size</th>
-                                            <th>Số lượng</th>
-                                            
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($quanti_size as $q) 
-                                          <tr>
-                                          <td>{{$q->size}}</td>
-                                          <td>{{$q->quantity}}</td><i class="fa fa-yoast" aria-hidden="true"></i>
-                                          </tr>
-                                          @endforeach
-                                        </tbody>
-                                      </table>
-                                </li>
-                                
-                                
                             </ul>
                         </div>
                     </div>

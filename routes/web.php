@@ -119,8 +119,14 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 
 		route::get('addProduct_of_IO/{id}','IOController@getAddPro_of_IO');
 		route::post('addProduct_of_IO/{id}','IOController@postAddPro_of_IO')->name('postAddPro_of_IO');
-		route::get('viewDetailIO/deletePro/{id}','ProductController@getDeletePro');
+		route::get('viewDetailIO/deletePro/{id}','IOController@getDeletePro');
+		route::get('viewDetailIO/editPro/{id}','IOController@getEditPro');
+		route::post('viewDetailIO/editPro/{id}','IOController@postEditPro');
 	});
+
+
+
+
 	route::group(['prefix'=>'order'],function(){
 		route::get('list_order','OderController@list_order')->name('list_order');
 		route::get('confirm_order/{id}','OderController@confirm_order');
