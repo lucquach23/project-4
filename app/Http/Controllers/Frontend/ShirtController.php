@@ -21,6 +21,7 @@ class ShirtController extends Controller
     {
         Session::forget('dis');
         Session::forget('mate');
+       // Session::forget('search');
         $listShirt=DB::table('shirt')->paginate(16);
         return view('Client.listShirt',compact('listShirt'));
     }
@@ -28,6 +29,7 @@ class ShirtController extends Controller
     {
         Session::forget('mate');
        Session::forget('dis');
+       Session::forget('search');
         $listShirt=DB::table('shirt')->where('id_category_shirt',$id)->paginate(16);
        // dd($listShirt);
         // print_r($listType);
@@ -78,7 +80,7 @@ class ShirtController extends Controller
     {
         Session::forget('mate');
         Session::forget('dis');
-         
+        //Session::forget('search');
        if(isset($req->dis))
        {
            $dis=$req->dis;
@@ -101,6 +103,7 @@ class ShirtController extends Controller
 
        $listShirt=DB::table('shirt')->where('name', 'like', '%' . $search . '%')->paginate(16);
      
+       //Session::put('search',$req);
        return view('Client.listShirt',compact('listShirt'));
       
     }

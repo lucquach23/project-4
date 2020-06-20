@@ -25,6 +25,7 @@
               <th >Ghi chú</th>
               <th>Chi tiết</th>
               <th>Trạng thái</th>
+              <th>In PDF</th>
               <th>Chuyển đang gửi</th>
               
             </tr>
@@ -64,7 +65,7 @@
                 </table>
                 </td>
               <td>Đã xác thực</td>
-             
+              <td><a href="print_order/{{$r->id_order}}" style="font-size: 28px; cursor: pointer;color:red;" class="fa fa-file-pdf-o" aria-hidden="true"></a></td>
               <td><a href="confirmed_to_shiping/{{$r->id_order}}" style="color: green; font-size:26px;" class="fa fa-arrow-right"
                   aria-hidden="true"></a></td>
             </tr>

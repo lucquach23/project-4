@@ -99,6 +99,13 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 		route::get('delete/{id}','nccController@getDeleteNcc');
 	});
 
+
+	//customer
+	route::group(['prefix'=>'customer'],function(){
+		route::get('listCus','CustomerController@listCus')->name('listCus');
+		
+	});
+
 	//PRODUCT
 	route::group(['prefix'=>'product'],function(){
 		route::get('listproduct','ProductController@listproduct')->name('listproduct');
@@ -144,7 +151,7 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 
 		route::get('distroy_order/{id}','OderController@distroy_order');
 
-
+		route::get('print_order/{checkout_code}','OderController@print_order');
 
 
 		

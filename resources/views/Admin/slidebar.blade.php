@@ -16,7 +16,7 @@
                   <li><a href="{{route('listIO')}}"><i class="fa fa-edit"></i> Đơn nhập hàng<span></span></a>
                     
                   </li>
-                  <li><a><i class="fa fa-male"></i> Khách hàng<span ></span></a>
+                <li><a href="{{route('listCus')}}"><i class="fa fa-male"></i> Khách hàng<span ></span></a>
                    
                   </li>
                   <li><a href="{{route('listNcc')}}"><i class="fa fa-table"></i>Nhà cung cấp<span ></span></a>

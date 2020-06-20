@@ -58,7 +58,7 @@ class CheckoutController extends Controller
         $un=$req->username_login;
         $pw=$req->password_login;
         //dd($un,$pw);
-        $rs=DB::table('customer')->where('username',$un)->where('password',$pw)->first();
+        $rs=DB::table('customer')->where('username',$un)->where('password',$pw)->where('status',1)->first();
         if($rs)
         {
             Session::put('customer_id', $rs->id_customer);
@@ -259,7 +259,7 @@ class CheckoutController extends Controller
     
   public function distroy_order_cus($id_order)
   {
-      DB::table('_order')->where('id_order',$id_order)->update(['status'=>4]);
+      DB::table('_order')->where('id_order',$id_order)->update(['status'=>5]);
       return back();
       //dd($id_order);
   }

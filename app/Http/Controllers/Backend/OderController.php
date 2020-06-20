@@ -7,7 +7,7 @@ use DB;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use PDF;
 
 use Illuminate\Support\Facades\View;
 
@@ -103,5 +103,85 @@ class OderController extends Controller
         $od->viewd=$dod;
     }
       return view('Admin.Order.listOrderDistroyed',['listOrder'=>$list_order_paymented]);
+   }
+   public function print_order($checkout_code)
+   {
+       //echo $id_order;
+       $pdf=\App::make('dompdf.wrapper');
+       $pdf->loadHTML($this->print_order_convert($checkout_code));
+       return $pdf->stream();
+   }
+   public function print_order_convert($checkout_code)
+   {
+       $order=DB::table('_order')->where('id_order',$checkout_code)->first();
+       //$cus=DB::table('customer')->where('id_customer',$order->id_customer)->first();
+       $order_detail=DB::table('order_detail')->where('id_order',$checkout_code)->get();
+       //dd($order,$cus,$order_detail);
+       $output='';
+       $output.='
+        <style>
+            body{
+                border:1px solid #ccc;
+                font-family:DejaVu Sans;
+            }
+            .table-ling{
+                border: 1px solid $000;
+                width:400px;
+            }
+            h1{
+                font-size:50px;
+            }
+            img{
+                width:50px;
+            }
+        </style>
+       <h1><center>LU-Shirt</center></h1>
+       ----------------
+       
+       <i>THÔNG TIN NGƯỜI GỬI</i>-------------------<br>
+       Họ tên: Quách Văn Lực<br>
+       SĐT: 0337 104 694<br>
+       <br><br>
+       ----------------
+      
+       <i>THÔNG TIN NGƯỜI NHẬN</i>-------------------<br>
+       Họ tên người nhận: '.$order->name_ship.'<br>
+       Địa chỉ nhận: '.$order->address_ship.'<br>
+       SĐT: '.$order->phone_ship.'<br>
+       Ghi chú: '.$order->notes.'<br>
+       Email: '.$order->email_ship.'<br>
+       <br><br>
+       
+       
+       ----------------<i>CHI TIẾT ĐƠN HÀNG</i>-----------------------
+       <br><br>
+       Ngày đặt: '.$order->date_order.'<br>
+        <table class="table-ling">      
+            <tr>
+            <th>Mã áo</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Size</th>
+            <th>Ảnh</th>
+            </tr>';
+      
+      
+        foreach($order_detail as $q) {
+        $output.='
+        <td>'.$q->id_shirt.'</td>
+        <td>'.$q->quantity.'</td>
+        <td>'.number_format($q->price).'</td>
+        <td>'.$q->size.'</td>
+        <td><img src="source/images-shirt/'.$q->image.'" alt=""></td>
+          
+        ';
+        }
+        $output.='</table>
+        <br>
+        <center>TỔNG TIỀN THU HỘ: '.number_format($order->total_money).' VNĐ</center>
+        
+        
+        ';
+    return $output;
    }
 }

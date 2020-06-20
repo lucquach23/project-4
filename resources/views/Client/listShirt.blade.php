@@ -29,6 +29,7 @@
 			@else
 			<div class="alert alert-success">Giảm giá {{Session::get('dis')}}%</div>
 			@endif
+			
 			<div class="row my-lg-5 mb-5">
 				<!-- grid left -->
 				@include('Client.navListShirt')
