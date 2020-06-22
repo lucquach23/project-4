@@ -69,8 +69,8 @@
               <td>{{number_format($r->price_input) }}</td>
               <td>{{number_format($r->price_sell) }}</td>
               
-              <th><a class="btn btn-primary" href="deletePro/{{$r->id_shirt}}" aria-hidden="true">Xoá</a></th>
-              <th><a href="editPro/{{$r->id_shirt}}" style="color: green; font-size:26px;" class="fa fa-wrench"
+              <th><a onclick="return confirm('Bạn có chắc chắn xoá sản phẩm này?');" style="color: red; font-size:26px;"  href="deletePro/{{$r->id_shirt}}" aria-hidden="true"><i class="fa fa-times"></i></a></th>
+              <th><a  href="editPro/{{$r->id_shirt}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
             </tr>
             @endforeach

@@ -103,6 +103,8 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 	//customer
 	route::group(['prefix'=>'customer'],function(){
 		route::get('listCus','CustomerController@listCus')->name('listCus');
+		route::get('active/{id}','CustomerController@active');
+		route::get('un_active/{id}','CustomerController@un_active');
 		
 	});
 

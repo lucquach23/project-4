@@ -71,7 +71,7 @@
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                           {{-- <button type="button" class="btn btn-primary">  --}}
-                          <a class="btn btn-primary" href="deleteIO/{{$r->id_import_order}}" aria-hidden="true">Xoá</a>
+                          <a onclick="return confirm('Bạn có chắc chắn xoá đơn nhập này?');"class="btn btn-primary" href="deleteIO/{{$r->id_import_order}}" aria-hidden="true">Xoá</a>
                           {{-- </button> --}}
                         </div>
                       </div>

@@ -134,52 +134,75 @@ class OderController extends Controller
             img{
                 width:50px;
             }
+            .divct{
+               margin-left:100px;
+               margin-top:100px;
+            }
+            .div1{
+                display:flex;
+
+            }
+            .div1-2{
+                float:right;
+            }
         </style>
        <h1><center>LU-Shirt</center></h1>
-       ----------------
        
-       <i>THÔNG TIN NGƯỜI GỬI</i>-------------------<br>
-       Họ tên: Quách Văn Lực<br>
-       SĐT: 0337 104 694<br>
-       <br><br>
-       ----------------
-      
-       <i>THÔNG TIN NGƯỜI NHẬN</i>-------------------<br>
-       Họ tên người nhận: '.$order->name_ship.'<br>
-       Địa chỉ nhận: '.$order->address_ship.'<br>
-       SĐT: '.$order->phone_ship.'<br>
-       Ghi chú: '.$order->notes.'<br>
-       Email: '.$order->email_ship.'<br>
-       <br><br>
-       
-       
-       ----------------<i>CHI TIẾT ĐƠN HÀNG</i>-----------------------
-       <br><br>
-       Ngày đặt: '.$order->date_order.'<br>
-        <table class="table-ling">      
-            <tr>
-            <th>Mã áo</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>Size</th>
-            <th>Ảnh</th>
-            </tr>';
-      
-      
-        foreach($order_detail as $q) {
-        $output.='
-        <td>'.$q->id_shirt.'</td>
-        <td>'.$q->quantity.'</td>
-        <td>'.number_format($q->price).'</td>
-        <td>'.$q->size.'</td>
-        <td><img src="source/images-shirt/'.$q->image.'" alt=""></td>
-          
-        ';
-        }
-        $output.='</table>
-        <br>
-        <center>TỔNG TIỀN THU HỘ: '.number_format($order->total_money).' VNĐ</center>
-        
+            <div>
+                <div class="div1">
+                    <div class="div1-1">
+                    -------<i>THÔNG TIN NGƯỜI GỬI</i>-------<br>
+                        Họ tên: Quách Văn Lực<br>
+                        SĐT: 0337 104 694<br>
+                    </div>
+                    <div class="div1-2">
+                   --------<i>THÔNG TIN NGƯỜI NHẬN</i>--------<br>
+                        Họ tên người nhận: '.$order->name_ship.'<br>
+                        Địa chỉ nhận: '.$order->address_ship.'<br>
+                        SĐT: '.$order->phone_ship.'<br>
+                        Ghi chú: '.$order->notes.'<br>
+                        Email: '.$order->email_ship.'<br>
+                    </div>
+                </div>
+            </div>
+            <div class="divct">
+            -----<i>CHI TIẾT ĐƠN HÀNG</i>-----
+                <br><br>
+                Ngày đặt: '.$order->date_order.'<br>
+                
+                <table class="table-ling">      
+                    <tr>
+                    <th>Mã áo</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Size</th>
+                    <th>Ảnh</th>
+                    </tr>';
+            
+            
+                foreach($order_detail as $q) {
+                $output.='
+                <td>'.$q->id_shirt.'</td>
+                <td>'.$q->quantity.'</td>
+                <td>'.number_format($q->price).'</td>
+                <td>'.$q->size.'</td>
+                <td><img src="source/images-shirt/'.$q->image.'" alt=""></td>
+                
+                ';
+                }
+                $output.='</table>
+                <br><br>
+                <center>TỔNG TIỀN THU HỘ: '.number_format($order->total_money).' VNĐ</center>
+            </div>
+            
+
+
+
+
+
+
+
+     
         
         ';
     return $output;

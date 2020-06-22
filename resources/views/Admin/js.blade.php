@@ -1,4 +1,4 @@
- 
+
  <script src="{{asset('lib/vendors/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
     <script src="{{asset('lib/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
@@ -35,9 +35,10 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{asset('lib/vendors/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('lib/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-
+    <script src="{{asset('lib/vendors/Chart.js/dist/Chart.min.js')}}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{asset('lib/build/js/custom.min.js')}}"></script>
+   {{-- // <script src="../build/js/custom.min.js"></script> --}}
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
     <script type="text/javascript">
       // CKEDITOR.replace('ckeditor');

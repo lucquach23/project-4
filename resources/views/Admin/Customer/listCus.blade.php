@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <h2 class="col-sm-4">DANH SÁCH KHÁCH HÀNG</h2>
-          <div class="col-sm-4"><a href="addNcc" type="button" class="btn btn-info">THÊM MỚI</a></div>
+          {{-- <div class="col-sm-4"><a href="addNcc" type="button" class="btn btn-info">THÊM MỚI</a></div> --}}
         </div>
         @if(session('mess'))
 
@@ -36,8 +36,12 @@
               <td>{{$r->email }}</td>
               <td>{{$r->phone }}</td>
                 <td>{{$r->username}}</td>
-            <td>{{$r->status=1?'Hoạt động':'Không hoạt động'}}</td>
-              
+              @if($r->status!=1)
+            <td><a href="active/{{$r->id_customer}}"><i style="font-size: 31px;color:red;" class="fa-thumb-styling fa fa-thumbs-down"></i></a></td>
+            @else
+           
+            <td><a href="un_active/{{$r->id_customer}}"><i style="font-size: 31px;color:green;" class="fa-thumb-styling fa fa-thumbs-up"></i></a></td>
+            @endif
               {{-- <th> --}}
               
                 {{-- <a href="delete/{{$r->id}}" style="color: red; font-size:26px;" class="fa fa-remove"

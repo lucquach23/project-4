@@ -64,7 +64,7 @@
     </div>
     <div style="width: 759px;" class="form-group">
         Mô tả
-        <textarea  style="resize: none;position: relative;" rows="3" name="mota"  class="form-control col-lg-12"  ></textarea> 
+        <textarea id="ckeditor1"  style="resize: none;position: relative;" rows="3" name="mota"  class="form-control col-lg-12"  ></textarea> 
     </div>
     {{-- id="ckeditor1" --}}
      

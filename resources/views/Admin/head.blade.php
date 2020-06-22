@@ -1,6 +1,6 @@
 <title>Quản trị</title>
   
-    
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="{{asset('source/images/iconshirt.png')}}"/>
     <!-- Bootstrap -->
     <link href="{{asset('lib/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -10,7 +10,7 @@
     <link href="{{asset('lib/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{asset('lib/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
-	
+	<script src="https://kit.fontawesome.com/d44e94b803.js" crossorigin="anonymous"></script>
     <!-- bootstrap-progressbar -->
     <link href="{{asset('lib/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- JQVMap -->

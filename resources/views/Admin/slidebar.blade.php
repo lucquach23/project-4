@@ -2,6 +2,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                  <li><a href="{{route('adminhome')}}"><i class="fa fa-home"></i>Home <span ></span></a>
                 <li><a href="{{route('listproduct')}}"><i class="fa fa-list"></i>Sản phẩm <span ></span></a>
                   <li><a><i class="fa fa-shopping-cart"></i>Đơn hàng<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
