@@ -24,6 +24,8 @@ route::get('/contact',function(){
 route::get('listShirt','Frontend\ShirtController@listShirt')->name('listShirt');
 route::get('listShirt/{id}','Frontend\ShirtController@typeShirt');
 route::get('detail/{id}','Frontend\ShirtController@ViewDetail');
+route::post('detail/cmt/{id}','Frontend\ShirtController@cmt');
+route::post('detail/rate/{id}','Frontend\ShirtController@rate');
 // route::post('/discount','Frontend\ShirtController@discount')->name('discount');
 // route::post('/material','Frontend\ShirtController@material')->name('material');
 // route::post('/PriceRange','Frontend\ShirtController@PriceRange')->name('PriceRange');

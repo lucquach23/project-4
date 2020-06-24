@@ -21,7 +21,7 @@
 		</ol>
     </nav>
     @foreach($viewDetail as $vd)
-    <div style="margin-top: -86px;"class="innerf-pages section py-5">
+    <div style="margin-top: -86px;margin-bottom: -180px;"class="innerf-pages section py-5">
         <div class="container">
             <div class="row my-sm-5">
             <div class="col-lg-4 single-right-left">
@@ -42,37 +42,22 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-8 mt-lg-0 mt-5 single-right-left simpleCart_shelfItem">
                     <h3>{{$vd->name}}</h3>
                     </h3>
                     <div class="caption">
 
                         <ul class="rating-single">
+                            @for ($i = 0; $i < $tbrate; $i++)
                             <li>
                                 <a href="#">
                                     <span class="fa fa-star yellow-star" aria-hidden="true"></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                </a>
-                            </li>
+                            @endfor
+                           ( {{$count_rate}} đánh giá)
+                            
                         </ul>
                         <div class="clearfix"> </div>
                         <h6>{{number_format($vd->price_sell)}} VNĐ</h6>
@@ -160,13 +145,7 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="description">
-                        <h5>Kiểm tra giao hàng, tùy chọn thanh toán và chi phí tại địa điểm của bạn</h5>
-                        <form action="#" method="post">
-                            <input type="text" placeholder="Enter pincode" required />
-                            <input type="submit" value="Check">
-                        </form>
-                    </div> -->
+                    
                     
                 </div>
             </div>
@@ -174,7 +153,107 @@
     </div>
     @break
     @endforeach
-    <!-- /new_arrivals -->
+    @if(Session('customer_id')!=null)
+    <section class="tabs_pro py-md-5 pt-sm-3 pb-5">
+      
+        <div class="tabs tabs-style-line pt-md-5">
+            <nav class="container">
+                <ul id="clothing-nav" class="nav nav-tabs tabs-style-line" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#women" id="women-tab" role="tab" data-toggle="tab" aria-controls="women" aria-expanded="true">Bình luận</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#men" role="tab" id="men-tab" data-toggle="tab" aria-controls="men">Đánh giá
+                        </a>
+                    </li>
+                   
+                </ul>
+            </nav>
+           
+            <div id="clothing-nav-content" class="tab-content py-sm-5">
+                <div role="tabpanel" class="tab-pane fade show active" id="women" aria-labelledby="women-tab">
+                    <div style="display: inline-block" id="owl-demo" class="owl-carousel text-center">
+                        <div  style="width: 800px;margin-left: 142px;">
+                            @foreach($cmt as $c)
+                            <div style="position: relative">
+                            <div style="float: left;"><b>{{$c->name}}</b></div><br>
+                            <div style="float: left;"> {{$c->cmt}}</div>
+                            </div><br>
+                            @endforeach
+                           
+                            <div style="display: flex;display: flex;margin-top: 91px">
+                                <form action="cmt/{{$id_shirt}}" method="post">
+                                    @csrf
+                                    <input style="height: 45px;
+                                    border-radius: 5%;" type="text" name="cmt" placeholder="Nhập bình luận của bạn...">
+                                    <button type="submit" class="btn btn-success">Bình luận</button>
+                                </form>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+<style>
+    input~i{
+       color: yellow;
+    }
+</style>
+                <div role="tabpanel" class="tab-pane fade" id="men" aria-labelledby="men-tab">
+                    <div id="owl-demo1" class="owl-carousel text-center">
+                        <div>
+                            <div style="width: 1020px;">
+                            <form action="rate/{{$id_shirt}}" method="post">
+                                @csrf
+                                    <div id="rate" style="float: right">
+                                        <div style="float: left">
+                                            <input type="radio" name="gender" value="5"> 
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </div><br>
+                                        <div style="float: left">
+                                        <input type="radio" name="gender" value="4"> 
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i><br>
+                                        </div><br>
+                                        <div style="float: left">
+                                            <input type="radio" name="gender" value="3"> 
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i><br>
+                                        </div><br>
+                                        <div style="float: left">
+                                            <input type="radio" name="gender" value="2"> 
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i><br>
+                                        </div><br>
+                                        <div style="float: left">
+                                            <input type="radio" name="gender" value="1"> 
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </div><br>
+                                        <button style="float: left;margin-top:10px" type="submit" class="btn btn-success">Đánh giá</button>
+                                    </div>
+                                   
+                                  </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+               
+                </div>
+
+            </div>
+        </div>
+    </section>
+    @else 
+<div style="margin-left: 132px;margin-top: 150px;margin-bottom: 63px;"> <a class="btn btn-primary" href="{{route('login_checkout')}}">Bình luận</a></div>
+    @endif
     <div class="section singlep_btm pb-5">
         <div class="container">
             <div class="new_arrivals">

@@ -17,6 +17,32 @@ use Illuminate\Support\Facades\View;
 
 class ShirtController extends Controller
 {
+    public function rate($id,Request $req)
+    {
+        $rate=0;
+        if(isset($req->gender))
+       {
+           $rate=$req->gender;
+
+       }else $rate=0;
+       // dd($rate);
+        $rate=array();
+        $rate['id_customer']=Session('customer_id');
+        $rate['id_shirt']=$id;
+        $rate['rate']=Round($rate);
+        DB::table('rate_cmt')->insert($rate);
+        return back();
+    }
+    public function cmt($id,Request $req)
+    {
+        
+        $save_cmt=array();
+        $save_cmt['id_customer']=Session('customer_id');
+        $save_cmt['id_shirt']=$id;
+        $save_cmt['cmt']=$req->cmt;
+        DB::table('rate_cmt')->insert($save_cmt);
+        return back();
+    }
     public function listShirt()
     {
         Session::forget('dis');
@@ -38,14 +64,20 @@ class ShirtController extends Controller
     }
     public function ViewDetail($id)
     {
-        // echo $id;
-        // exit;
-       //$productCare=DB::table('productcare')->get();
+       $cmt=DB::select('call get_cmt(?)', [$id]);
+       $count_rate=DB::table('rate_cmt')->where('id_shirt',$id)->whereNotNull('rate')->count();
+       $rate=DB::select('call get_tb_rate(?)', [$id]);
+       $rate=(object)$rate[0];
+      
+      $tb= ROUND($rate->tbrate);
+    
+       //($tb);
+      
       $productCare= DB::table('shirt')->inRandomOrder()->limit(4)->get();
         $viewDetail=DB::table('shirt')->where('id_shirt',$id)->get();
         $quanti_size=DB::table('quantity_size')->where('id_shirt',$id)->get();
-        //dd($quanti_size);
-        return view('Client.viewDetail',['viewDetail'=>$viewDetail,'productCare'=>$productCare,'quanti_size'=>$quanti_size]);
+        
+        return view('Client.viewDetail',['tbrate'=>$tb,'count_rate'=>$count_rate,'id_shirt'=>$id,'cmt'=>$cmt,'viewDetail'=>$viewDetail,'productCare'=>$productCare,'quanti_size'=>$quanti_size]);
     }
     public function discount(Request $req){
         //$a=(600-(600*20)/100)/100;
