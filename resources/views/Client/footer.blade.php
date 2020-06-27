@@ -6,17 +6,17 @@
                     <div class="row  footer-v2grids w3-agileits">
                         <!-- services -->
                         <div class="col-lg-2 col-sm-6 footer-v2grid">
-                            <h4>Support</h4>
+                            <h4>Hỗ trợ</h4>
                             <ul>
 
                                 <li>
-                                    <a href="#">Payment</a>
+                                    <a href="#">Thanh toán</a>
                                 </li>
                                 <li>
-                                    <a href="#">Shipping</a>
+                                    <a href="#">Giao hàng</a>
                                 </li>
                                 <li>
-                                    <a href="#">Cancellation & Returns</a>
+                                    <a href="#">Nhận trả hàng</a>
                                 </li>
                                 <li>
                                     <a href="#">FAQ</a>
@@ -26,7 +26,7 @@
                         <!-- //services -->
                         <!-- latest posts -->
                         <div class="col-lg-3 col-sm-6 footer-v2grid mt-sm-0 mt-5">
-                            <h4>Latest Blog</h4>
+                            <h4>Thềm Blog</h4>
                             <div class="footer-v2grid1 row">
                                 <div class="col-4 footer-v2grid1-left">
                                     <a href="blog.html">
@@ -34,7 +34,7 @@
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
-                                    <a href="blog.html">eveniie arcet ut moles morbi dapiti</a>
+                                    <a href="blog.html">Thời trang nền tảng</a>
                                 </div>
                             </div>
                             <div class="footer-v2grid1 row my-2">
@@ -44,7 +44,7 @@
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
-                                    <a href="blog.html">earum rerum tenmorbi dapiti et</a>
+                                    <a href="blog.html">Sang trọng, lịch sự, trẻ trung</a>
                                 </div>
                             </div>
                             <div class="footer-v2grid1 row">
@@ -54,32 +54,32 @@
                                     </a>
                                 </div>
                                 <div class="col-8 footer-v2grid1-right p-0">
-                                    <a href="blog.html">morbi dapiti eveniet ut molesti</a>
+                                    <a href="blog.html">Đẳng cấp, thời thượng, mọi độ tuổi</a>
                                 </div>
                             </div>
                         </div>
                         <!-- //latest posts -->
                         <!-- locations -->
                         <div class="col-lg-2 col-sm-6 footer-v2grid my-lg-0 my-5">
-                            <h4>office locations</h4>
+                            <h4>Mạng lưới cơ sở</h4>
                             <ul>
                                 <li>
-                                    <a href="#">new jersey</a>
+                                    <a href="#">Ba Đình, Hà Nội</a>
                                 </li>
                                 <li>
-                                    <a href="#">texas</a>
+                                    <a href="#">Mỹ Hào, Hưng Yên</a>
                                 </li>
                                 <li>
-                                    <a href="#">michigan</a>
+                                    <a href="#">Thạch Thất, Sài Gòn</a>
                                 </li>
                                 <li>
-                                    <a href="#">cannada</a>
+                                    <a href="#">Phù Cừ, Hưng Yên</a>
                                 </li>
                                 <li>
-                                    <a href="#">brazil</a>
+                                    <a href="#">Thanh Hà, Hải Dương</a>
                                 </li>
                                 <li>
-                                    <a href="#">california</a>
+                                    <a href="#">Cẩm Phả, Quảng Ninh</a>
                                 </li>
                             </ul>
                         </div>
@@ -87,7 +87,7 @@
                         <!-- flickr posts -->
                         <div class="col-lg-3 col-sm-6 footer-v2grid my-lg-0 my-sm-5">
                             <h4 class="b-log">
-                                flickr posts
+                                Instagam App
                             </h4>
                             <div class="footer-v2grid-instagram">
                                 <a href="#">
@@ -125,56 +125,36 @@
                         <!-- //flickr posts -->
                         <!-- popular tags -->
                         <div class="col-lg-2  footer-v2grid mt-sm-0 mt-5">
-                            <h4>popular tags</h4>
+                            <h4>Từ khoá quan tâm</h4>
                             <ul class="w3-tag2">
                                 <li>
-                                    <a href="#">amet</a>
+                                    <a href="#">caro</a>
                                 </li>
                                 <li>
-                                    <a href="#">placerat</a>
+                                    <a href="#">Sơ mi</a>
                                 </li>
                                 <li>
-                                    <a href="#">Proin </a>
+                                    <a href="#">Denim </a>
                                 </li>
                                 <li>
-                                    <a href="#">vehicula</a>
+                                    <a href="#">Shirt-White</a>
                                 </li>
                                 <li>
-                                    <a href="#">diam</a>
+                                    <a href="#">Over-Shirt</a>
                                 </li>
                                 <li>
-                                    <a href="#">velit</a>
+                                    <a href="#">Sale</a>
                                 </li>
                                 <li>
-                                    <a href="#">felis</a>
+                                    <a href="#">Fashion</a>
                                 </li>
                                 <li>
-                                    <a href="#">mauris</a>
+                                    <a href="#">Shirt-Fashion</a>
                                 </li>
                                 <li>
-                                    <a href="#">amet</a>
+                                    <a href="#">T-Shirt</a>
                                 </li>
-                                <li>
-                                    <a href="#">placerat</a>
-                                </li>
-                                <li>
-                                    <a href="#">Proin </a>
-                                </li>
-                                <li>
-                                    <a href="#">vehicula</a>
-                                </li>
-                                <li>
-                                    <a href="#">diam</a>
-                                </li>
-                                <li>
-                                    <a href="#">velit</a>
-                                </li>
-                                <li>
-                                    <a href="#">felis</a>
-                                </li>
-                                <li>
-                                    <a href="#">mauris</a>
-                                </li>
+                                
                             </ul>
                         </div>
                         <!-- //popular tags -->

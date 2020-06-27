@@ -12,9 +12,7 @@ route::get('/','Frontend\HomeController@getIndex')->name('home');
 route::get('/about',function(){
 	return view('Client.about');
 });
-route::get('/blog',function(){
-	return view('Client.blog');
-});
+route::get('/blog','Frontend\BlogController@getIndex');
 route::get('/contact',function(){
 	return view('Client.contact');
 });
@@ -76,7 +74,15 @@ route::post('/changeInfo/{id}','CheckoutController@postChangeInfo');
 
 //admin 'middleware'=>'check' 'middleware' => 'check'
 route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
-	
+	//blog
+	route::group(['prefix'=>'blog'],function(){
+		route::get('listBlog','BlogController@getList')->name('listBlog');
+		route::get('addBlog','BlogController@getAddBlog');
+		route::post('addBlog','BlogController@postAddBlog');
+		route::get('edit/{id}','BlogController@getEditBlog');
+		route::post('edit/{id}','BlogController@postEditBlog');
+		route::get('delete/{id}','BlogController@getDeleteBlog');
+	});
 	
 	//home admin
 	route::get('home','HomeAdminController@home')->name('adminhome');
@@ -144,7 +150,8 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 
 		route::get('list_order_confirmed','OderController@list_order_confirmed')->name('listOrderConfirmed');
 		route::get('confirmed_to_shiping/{id}','OderController@confirmed_to_shiping');
-
+		route::get('getOrderById/{id}','OderController@getOrderById');
+		route::get('re-order/{id}','OderController@re_order');
 
 		route::get('list_order_shiping','OderController@list_order_shiping')->name('listOrderShiping');
 		route::get('shiping_to_paymented/{id}','OderController@shiping_to_paymented');

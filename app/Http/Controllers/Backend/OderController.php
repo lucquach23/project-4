@@ -6,10 +6,12 @@ namespace App\Http\Controllers\Backend;
 use DB;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use PDF;
 
 use Illuminate\Support\Facades\View;
+use PHPUnit\Util\Json;
 
 class OderController extends Controller
 {
@@ -24,6 +26,18 @@ class OderController extends Controller
     }
       return view('Admin.Order.listOrder',['listOrder'=>$list_order]);
    }
+   public function getOrderById($id)
+   {
+    
+    //$order=DB::table('list_order')->find($id);
+    $dod=DB::table('order_detail')->where('id_order',$id)->get();
+    return response()->json([
+        'data' =>
+        $dod,
+        'success' => true,
+
+    ]);
+   }
    public function confirm_order($id_order)
    {
       // echo $id_order;
@@ -33,7 +47,14 @@ class OderController extends Controller
           return back()->with('mess','Xác thực thành công! Đơn hàng đã chuyển sang đã xác thực');
       }
    }
-
+public function re_order($id)
+{
+    $rs=DB::table('_order')->where('id_order',$id)->update(['status'=>1]);
+      if($rs)
+      {
+          return back()->with('mess','Khôi phục thành công! Đơn hàng đã chuyển sang đã xác thực');
+      }
+}
 
 
    public function list_order_confirmed()

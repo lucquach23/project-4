@@ -40,7 +40,7 @@
                             @foreach($ord_cus as $i)
                             <tr>
                             <td>{{$i->id_order}}</td>
-                            <td>{{$i->date_order}}</td>
+                            <td>{{date('d/m/Y',strtotime($i->date_order ))}}</td>
                             <td>{{number_format($i->total_money)}}</td>
                             <td>{{$i->notes}}</td>
                             <td>   
@@ -94,7 +94,7 @@
                             @foreach($od_shiping_cus as $i)
                             <tr>
                             <td>{{$i->id_order}}</td>
-                            <td>{{$i->date_order}}</td>
+                            <td>{{date('d/m/Y',strtotime($i->date_order ))}}</td>
                             <td>{{number_format($i->total_money)}}</td>
                             <td>{{$i->notes}}</td>
                             <td>   
@@ -148,7 +148,7 @@
                             @foreach($or_paymented_cus as $i)
                             <tr>
                             <td>{{$i->id_order}}</td>
-                            <td>{{$i->date_order}}</td>
+                            <td>{{date('d/m/Y',strtotime($i->date_order ))}}</td>
                             <td>{{number_format($i->total_money)}}</td>
                             <td>{{$i->notes}}</td>
                             <td>   
@@ -203,7 +203,7 @@
                             @foreach($ordis as $i)
                             <tr>
                             <td>{{$i->id_order}}</td>
-                            <td>{{$i->date_order}}</td>
+                            <td>{{date('d/m/Y',strtotime($i->date_order ))}}</td>
                             <td>{{number_format($i->total_money)}}</td>
                             <td>{{$i->notes}}</td>
                             <td>   

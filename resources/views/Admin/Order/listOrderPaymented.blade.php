@@ -37,32 +37,52 @@
               <td>{{$r->id_order}}</td>
               <td>{{$r->name}}</td>
             <td>{{$r->phone}}</td>
-              <td>{{$r->date_order }}</td>
+              <td>{{date('d/m/Y',strtotime($r->date_order ))}}</td>
               <td>{{number_format($r->total_money) }}</td>
               <td>{{$r->notes }}</td>
               <td>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Mã SP</th>
-                            <th>Ảnh</th>
-                            <th>Số lượng</th>
-                            <th>Giá</th>
-                            <th>Size</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($r->viewd as $or)
-                        <tr>
-                        <td>{{$or->id_shirt}}</td>
-                        <td><img style="width: 50px" src="/source/images-shirt/{{$or->image}}" alt=""></td>
-                        <td>{{$or->quantity}}</td>
-                        <td>{{number_format($or->price)}}</td>
-                        <td>{{$or->size}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                
+                
+                  <i style="color: green; font-size:26px;" type="button" class="fa fa-eye" onclick="viewBill({{$r->id_order}})">
+                    
+                  </i>
+  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Chi tiết sản phẩm</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Mã SP</th>
+                                <th>Ảnh</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                                <th>Size</th>
+                              </tr>
+                            </thead>
+                            <tbody id="orderList">
+  
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+              
                 </td>
               <td>Đã thanh toán</td>
              
@@ -97,4 +117,29 @@
 <script src="{{asset('lib/vendors/jszip/dist/jszip.min.js')}}"></script>
 <script src="{{asset('lib/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
 <script src="{{asset('lib/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+<script>
+  function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+  function viewBill(id){
+    console.log(id)
+    $.get("getOrderById/"+id,null,
+function(data,status){
+let listOd="";
+data.data.forEach(element => {
+  listOd+=`<tr>
+            <td>${element.id_shirt}</td>
+            <td><img style="width: 50px" src="/source/images-shirt/${element.image}" alt=""></td>
+            <td>${element.quantity}</td>
+            <td>`+numberWithCommas(element.price)+`</td>
+            <td>${element.size}</td>
+            </tr>`
+});
+$("#orderList").html(listOd)
+});
+$('#exampleModal').modal('show');
+  }
+</script>
 @endpush

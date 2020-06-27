@@ -19,17 +19,17 @@ class ShirtController extends Controller
 {
     public function rate($id,Request $req)
     {
-        $rate=0;
+        $sl=0;
         if(isset($req->gender))
        {
-           $rate=$req->gender;
+           $sl=$req->gender;
 
-       }else $rate=0;
-       // dd($rate);
+       }else $sl=0;
+       //dd($rate);
         $rate=array();
         $rate['id_customer']=Session('customer_id');
         $rate['id_shirt']=$id;
-        $rate['rate']=Round($rate);
+        $rate['rate']=(int)$sl;
         DB::table('rate_cmt')->insert($rate);
         return back();
     }
@@ -67,9 +67,13 @@ class ShirtController extends Controller
        $cmt=DB::select('call get_cmt(?)', [$id]);
        $count_rate=DB::table('rate_cmt')->where('id_shirt',$id)->whereNotNull('rate')->count();
        $rate=DB::select('call get_tb_rate(?)', [$id]);
-       $rate=(object)$rate[0];
+       //$rate=(object)$rate[0];
+      $tb=0;
+      foreach($rate as $r)
+      {
+        $tb= ROUND($r->tbrate);
+      }
       
-      $tb= ROUND($rate->tbrate);
     
        //($tb);
       

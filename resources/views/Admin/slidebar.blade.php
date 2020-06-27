@@ -23,6 +23,9 @@
                   <li><a href="{{route('listNcc')}}"><i class="fa fa-table"></i>Nhà cung cấp<span ></span></a>
                    
                   </li>
+                  <li><a href="{{route('listBlog')}}"><i class="fa fa-blog"></i>Blog<span ></span></a>
+                   
+                  </li>
                   <li><a href="{{route('listAccount')}}"><i class="fa fa-bar-chart-o"></i>Tài khoản<span ></span></a>
                     
                   </li>

@@ -5,36 +5,26 @@
             <h5 class="head_agileinfo text-center text-capitalize pb-5">
                 <span>My Blog</span></h5>
             <!-- blog row -->
-            <div class="row card-columns py-lg-5">
-                <div class="col-md-4 p-0">
-                    <div class="card">
+            <div class="">
+                <div style="display: flex" class="">
+                    @foreach($blog as $b)
+                    <div style="height: 400px" class="card">
+                        <center>
                         <a href="single.html">
-                            <img class="card-img-top" src="{{asset('source/images/blg1.jpg')}}" alt="Card image cap">
+                        <img style="width: 200px" class="card-img-top" src="/source/images-shirt/{{$b->image}}" alt="Card image cap">
                         </a>
+                    </center>
                         <div class="card-body">
                             <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
+                                <a href="single.html">{{$b->title}}</a>
                             </h5>
-                            <p class="card-text">Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vestibulum
-                                ac diam sit amet quam vehicula elementum sed sit amet dui.</p>
+                            <p style="white-space: nowrap; 
+                            overflow: hidden; text-overflow: ellipsis;" class="card-text">{{$b->content}}</p>
                         </div>
                     </div>
-                    <div class="card">
-                        <a href="single.html">
-                            <img class="card-img-top" src="{{asset('source/images/a2.jpg')}}" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Pellentesque in ipsum id orci porta dapibus. Vestibulum ac diam sit amet quam vehicula elementum.</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-md-4 0">
+                {{-- <div class="col-md-4 0">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title blg_w3ls">
@@ -109,7 +99,7 @@
                             <img class="card-img-top" src="{{asset('source/images/i10.jpg')}}" alt="Card image cap">
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

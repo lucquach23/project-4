@@ -25,7 +25,7 @@
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <h3>Thêm sản phẩm</h3>
         <div style="display: flex;width: 544px;" class="form-group">
-            <div>
+            <div hidden>
                 <label style="    width: 83px;" class="control-label ">Mã đơn nhập:</label>
                 <input style="width: 50px" name="madonnhap" type="" class="form-control"
                     value="{{$io->id_import_order}}">
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <label class="control-label ">Ngày:</label>
-                <input name="ngay" type="" class="form-control" value="{{$io->create_date}}">
+                <input name="ngay" type="" class="form-control" value="{{date('d/m/Y',strtotime($io->create_date))}}">
             </div>
             {{-- <div>
                 <label class="control-label ">Seri:</label>

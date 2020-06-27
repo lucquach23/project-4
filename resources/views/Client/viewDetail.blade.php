@@ -49,7 +49,7 @@
                     <div class="caption">
 
                         <ul class="rating-single">
-                            @for ($i = 0; $i < $tbrate; $i++)
+                            @for ($i = 0; $i <= $tbrate; $i++)
                             <li>
                                 <a href="#">
                                     <span class="fa fa-star yellow-star" aria-hidden="true"></span>
