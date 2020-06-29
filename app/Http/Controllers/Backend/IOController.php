@@ -175,8 +175,8 @@ class IOController extends Controller
     public function getDeleteIO($id)
     {
        
-        // DB::table('import_order')->where('id_import_order', $id)->delete();
-        // return back()->with('mess','Xoá thành công!');
+        DB::table('import_order')->where('id_import_order', $id)->delete();
+        return back()->with('mess','Xoá thành công!');
     }
    
 }

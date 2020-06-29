@@ -18,9 +18,9 @@ class check
     {
         if (Session::has('id_account') != null) {
 
-            return response($next($request));
+            return $next($request);
         } else {
-            return response(redirect()->route('getLogin'));
+            return redirect()->route('getLogin');
         }
     }
 }

@@ -62,20 +62,31 @@ class CartController extends Controller
     {
       
       
-            $oldCart=Session('Cart')?Session('Cart'):null;
+           // dd($id,$quanty,$size);
+            $quan_size=DB::table('quantity_size')->where('id_shirt',$id)->where('size',$size)->first();
+            //dd($quan_size);
+           if((int)$quanty>$quan_size->quantity)
+           {
+               $tb='<script>
+                        alert("size '.$size.' sẵn có '.$quan_size->quantity.' trong kho!!!");
+                    </script>
+               ';
+               echo $tb;
+               return view('Client.list-cart');
+           }else{
+             $oldCart=Session('Cart')?Session('Cart'):null;
             $newCart=new Cart($oldCart);
            
             $newCart->UpdateItemCart($id,$quanty,$size);
             $req->session()->put('Cart',$newCart); 
-            // foreach($newCart->products as $item)
-            // {
-            //    // dd($item);
-            //     dd($item['size']);
-            // }
-            // exit;
-            //  dd($newCart);
-            //   exit;
+           
             return view('Client.list-cart');
+           }
+           //exit;
+
+
+
+           
       
     }
 }

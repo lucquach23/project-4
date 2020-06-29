@@ -13,6 +13,18 @@ class HomeAdminController extends Controller
 {
     public function home()
     {
+        $orderYear=DB::table('gettk')->get();
+        
+
+       // dd($orderYear);
+
+
+
+
+
+
+
+
         $count_shirt=DB::table('shirt')->count('id_shirt');
        // dd($shirt);
        $count_order=DB::table('_order')->where('status',1)->count('id_order');
@@ -23,8 +35,12 @@ class HomeAdminController extends Controller
        //dd($ncc);
        $slgd=DB::table('slgd2')->get();
        $top_shirt=DB::table('gettop5shirt')->get();
-      return  view('Admin.home',['top_shirt'=>$top_shirt,'slgd'=>$slgd,'ncc'=>$ncc,'count_customer'=>$count_customer,'count_import_order'=>$count_import_order,'count_order'=>$count_order,'count_shirt'=>$count_shirt]);
+      return  view('Admin.home',['orderYear'=>$orderYear,'top_shirt'=>$top_shirt,'slgd'=>$slgd,'ncc'=>$ncc,'count_customer'=>$count_customer,'count_import_order'=>$count_import_order,'count_order'=>$count_order,'count_shirt'=>$count_shirt]);
     }
-   
+   public function thongke(Request $req)
+   {
+        $od=DB::table('_order')->where('date_order',$req->times)->where('status',4)->get();
+        dd($od);
+   }
    
 }

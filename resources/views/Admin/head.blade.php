@@ -21,3 +21,13 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('lib/build/css/custom.min.css')}}" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.highcharts.com/highcharts.js" crossorigin="anonymous"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js" crossorigin="anonymous"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js" crossorigin="anonymous"></script>
+
+    {{-- {{ Html::script('https://code.jquery.com/jquery-3.1.1.min.js') }}
+    {{ Html::script('') }}
+    {{ Html::script('') }}
+    {{ Html::script('') }} --}}
+

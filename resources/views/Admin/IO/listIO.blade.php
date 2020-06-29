@@ -34,7 +34,7 @@
 
               <td>{{$r->id_import_order}}</td>
               {{-- <td>{{$r->name }}</td> --}}
-              <td>{{$r->create_date }}</td>
+              <td>{{date('d/m/Y',strtotime($r->create_date)) }}</td>
               <td>{{$r->quantity }}</td>
               <td>{{number_format($r->total_money) }}</td>
               <th>
@@ -45,40 +45,9 @@
                 <a href="addProduct_of_IO/{{$r->id_import_order}}" style="color:chartreuse; font-size:26px;" class="fa fa-plus"
                     aria-hidden="true">
               </th>
-             
-              
-                {{-- <a href="delete/{{$r->id_import_order}}" style="color: red; font-size:26px;" class="fa fa-remove"
-                  aria-hidden="true">
-                </a> --}}
-                <th>
-                  <i type="button" style="color: red; font-size:26px;" class="fa fa-remove" data-toggle="modal" data-target="#exampleModal">
-                   
-                  </i>
-                  
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">XOÁ ĐƠN NHẬP</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          Khi xoá các sản phẩm trong đơn sẽ xoá theo, bạn có chắc muốn xoá?
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                          {{-- <button type="button" class="btn btn-primary">  --}}
-                          <a onclick="return confirm('Bạn có chắc chắn xoá đơn nhập này?');"class="btn btn-primary" href="deleteIO/{{$r->id_import_order}}" aria-hidden="true">Xoá</a>
-                          {{-- </button> --}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                 
+             <th>
+              <a  onclick="return confirm('Bạn có chắc chắn xoá đơn nhập này?');" href="deleteIO/{{$r->id_import_order}}" aria-hidden="true"><i style="color: red; font-size:26px;" class="fa fa-times"></i></a>
+            </th>
                 </th>
               </th>
               {{-- <th><a href="edit/{{$r->id_import_order}}" style="color: green; font-size:26px;" class="fa fa-times"

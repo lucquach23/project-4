@@ -73,7 +73,7 @@ route::post('/changeInfo/{id}','CheckoutController@postChangeInfo');
 
 
 //admin 'middleware'=>'check' 'middleware' => 'check'
-route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
+route::group(['prefix'=>'admin','namespace'=>'Backend','middleware' => 'check'],function(){
 	//blog
 	route::group(['prefix'=>'blog'],function(){
 		route::get('listBlog','BlogController@getList')->name('listBlog');
@@ -86,7 +86,7 @@ route::group(['prefix'=>'admin','namespace'=>'Backend'],function(){
 	
 	//home admin
 	route::get('home','HomeAdminController@home')->name('adminhome');
-	
+	route::get('thongke','HomeAdminController@thongke');
 	
 	//account
 	route::group(['prefix'=>'account'],function(){

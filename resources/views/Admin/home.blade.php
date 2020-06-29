@@ -40,12 +40,15 @@
 
     <div class="row">
       <div class="col-md-12">
+        <div id="container" data-order="{{ $orderYear }}"></div>
         <div class="x_panel">
             <div class="x_title">
                 <h2>Chọn thống kê<small>theo thời gian</small></h2>
-                
-                  <input type="date" style="float: left;;background: #fff; cursor: pointer; margin-left: 310px; padding: 5px 10px; border: 1px solid #ccc">
-                
+                <form action="thongke" method="get">
+                  <input type="date" name="times" style="float: left;background: #fff; cursor: pointer; margin-left: 310px; padding: 5px 10px; border: 1px solid #ccc">
+                  {{-- <input type="text" name="te" value="4"> --}}
+                  <button type="submit" style="border: 1px solid red;height: 33px;" class="btn">Xem</button>
+                </form>
                 <div class="clearfix"></div>
               </div>
           <div class="x_content">
@@ -53,12 +56,17 @@
               
               <div class="tiles">
                 <div class="col-md-4 tile">
-                  <span>Tổng tiền nhập</span>
-                  <h2>25,000,000 VNĐ</h2>
+                  <span>Tháng</span>
+                  <h2>6</h2>
                   <span class="sparkline11 graph" style="height: 160px;"><canvas width="198" height="40" style="display: inline-block; width: 198px; height: 40px; vertical-align: top;"></canvas></span>
                 </div>
                 <div class="col-md-4 tile">
-                  <span>Tổng đã thu</span>
+                  <span>Đơn đã thanh toán</span>
+                <h2><a href="{{route('listOrderPaymented')}}">1</a></h2>
+                  <span class="sparkline11 graph" style="height: 160px;"><canvas width="198" height="40" style="display: inline-block; width: 198px; height: 40px; vertical-align: top;"></canvas></span>
+                </div>
+                <div class="col-md-4 tile">
+                  <span>Doanh thu</span>
                   <h2>5,500,000 VNĐ</h2>
                   <span class="sparkline22 graph" style="height: 160px;"><canvas width="200" height="40" style="display: inline-block; width: 200px; height: 40px; vertical-align: top;"></canvas></span>
                 </div>
@@ -178,4 +186,74 @@
       </div>
     </div>
   </div>
+  <script>
+    $(document).ready(function(){
+    var order = $('#container').data('order');
+    var listOfValue = [];
+    var listOfYear = [];
+    order.forEach(function(element){
+        listOfYear.push(element.getYear);
+        listOfValue.push(element.value);
+    });
+    console.log(listOfValue);
+    var chart = Highcharts.chart('container', {
+
+        title: {
+            text: 'Doanh thu theo tháng'
+        },
+
+        subtitle: {
+            text: ''
+        },
+
+        xAxis: {
+            categories: listOfYear,
+        },
+
+        series: [{
+            type: 'column',
+            colorByPoint: true,
+            data: listOfValue,
+            showInLegend: false
+        }]
+    });
+    
+    $('#plain').click(function () {
+        chart.update({
+            chart: {
+                inverted: false,
+                polar: false
+            },
+            subtitle: {
+                text: 'Plain'
+            }
+        });
+    });
+
+    $('#inverted').click(function () {
+        chart.update({
+            chart: {
+                inverted: true,
+                polar: false
+            },
+            subtitle: {
+                text: 'Inverted'
+            }
+        });
+    });
+
+    $('#polar').click(function () {
+        chart.update({
+            chart: {
+                inverted: false,
+                polar: true
+            },
+            subtitle: {
+                text: 'Polar'
+            }
+        });
+    });
+});
+
+  </script>
 @endsection

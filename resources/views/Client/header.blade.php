@@ -33,7 +33,7 @@
                                       </div>
                                     </li>
                            @else
-                           <li id="loginli"><a href="{{route('login_checkout')}}">Đăng nhập</a></li>
+                           <li id="loginli"><a href="{{route('login_checkout')}}"><i class="fa fa-user"></i></a></li>
                            @endif
                         
                         
