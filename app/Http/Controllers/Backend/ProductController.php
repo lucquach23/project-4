@@ -20,7 +20,21 @@ class ProductController extends Controller
     route::get('editPro/{id}','ProductController@getEditPro');
     route::post('editPro/{id}','ProductController@postEditPro');
     route::get('deletePro/{id}','ProductController@getDeletePro');*/
-
+    public function display($id){
+        //echo 'hi';
+        DB::table('shirt')->where('id_shirt',$id)->update(['status'=>0]);
+        // if($t)
+        // {
+            return back()->with('mess','Vô hiệu hoá thành công!');
+        //}
+    }
+    public function un_display($id){
+        DB::table('shirt')->where('id_shirt',$id)->update(['status'=>1]);
+        // if($t)
+        // {
+            return back()->with('mess','Kích hoạt thành công!');
+        //}
+    }
     public function listproduct()
     {
        // $rs=DB::table('gs')->get();

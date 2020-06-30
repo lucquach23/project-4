@@ -165,13 +165,10 @@
         $.ajax({
 			url: '/Delete-Item-List-Cart/'+ id,
 			type: 'GET'
-		}).done(function(response){
-			
-			RenderListCart(response);
-			
-				alertify.success('Đã xoá!');
-		});
-	
+		}).done(function(response){			
+			RenderListCart(response);			
+			alertify.success('Đã xoá!');
+		});	
     }
     function SaveListItemCart(id){    
        $size = $("#size-item-"+id).val();

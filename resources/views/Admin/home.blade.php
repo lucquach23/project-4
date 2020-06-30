@@ -41,13 +41,16 @@
     <div class="row">
       <div class="col-md-12">
         <div id="container" data-order="{{ $orderYear }}"></div>
+        {{-- @if(Session('thongke')!=null) --}}
+        
+        {{-- @else  --}}
         <div class="x_panel">
             <div class="x_title">
                 <h2>Chọn thống kê<small>theo thời gian</small></h2>
-                <form action="thongke" method="get">
+                <form>
                   <input type="date" name="times" style="float: left;background: #fff; cursor: pointer; margin-left: 310px; padding: 5px 10px; border: 1px solid #ccc">
                   {{-- <input type="text" name="te" value="4"> --}}
-                  <button type="submit" style="border: 1px solid red;height: 33px;" class="btn">Xem</button>
+                  <button type="button" style="border: 1px solid red;height: 33px;" class="btn" id="btnXemThongKe">Xem</button>
                 </form>
                 <div class="clearfix"></div>
               </div>
@@ -56,31 +59,31 @@
               
               <div class="tiles">
                 <div class="col-md-4 tile">
-                  <span>Tháng</span>
-                  <h2>6</h2>
+                  <span>dd/mm/YY</span>
+                  <h2 id="ngaythongke"></h2>
                   <span class="sparkline11 graph" style="height: 160px;"><canvas width="198" height="40" style="display: inline-block; width: 198px; height: 40px; vertical-align: top;"></canvas></span>
                 </div>
                 <div class="col-md-4 tile">
                   <span>Đơn đã thanh toán</span>
-                <h2><a href="{{route('listOrderPaymented')}}">1</a></h2>
+                <h2 id="sodonhang"></h2>
                   <span class="sparkline11 graph" style="height: 160px;"><canvas width="198" height="40" style="display: inline-block; width: 198px; height: 40px; vertical-align: top;"></canvas></span>
                 </div>
                 <div class="col-md-4 tile">
                   <span>Doanh thu</span>
-                  <h2>5,500,000 VNĐ</h2>
+                  <h2 id="doanhthu"> </h2>
                   <span class="sparkline22 graph" style="height: 160px;"><canvas width="200" height="40" style="display: inline-block; width: 200px; height: 40px; vertical-align: top;"></canvas></span>
                 </div>
                 
               </div>
-
+        
             </div>
-
+        
             <div class="col-md-3 col-sm-12 ">
               
             </div>
-
+        
           </div>
-        </div>
+          {{-- @endif --}}
       </div>
     </div>
 
@@ -203,7 +206,7 @@
         },
 
         subtitle: {
-            text: ''
+            text: '2020'
         },
 
         xAxis: {
@@ -252,6 +255,32 @@
                 text: 'Polar'
             }
         });
+    });
+
+    //Click xem thong ke
+    $('#btnXemThongKe').on('click', function(e) {
+      e.preventDefault();
+      var times = $("input[name='times']").val();
+      var url_thongke = "{!! route('admin.thongke') !!}";
+      $.ajax({
+        url: url_thongke,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          times: times
+        },
+        success: function(res) {
+          if(res.status) {
+            $('#ngaythongke').text(res.ngay);
+            $('#doanhthu').text(res.tongtien);
+            $('#sodonhang').text(res.tongdon);
+          }
+        },
+        error: function(err) {
+          console.log(err);
+        }
+      });
     });
 });
 

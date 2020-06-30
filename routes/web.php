@@ -21,7 +21,7 @@ route::get('/contact',function(){
 //list Shirt
 route::get('listShirt','Frontend\ShirtController@listShirt')->name('listShirt');
 route::get('listShirt/{id}','Frontend\ShirtController@typeShirt');
-route::get('detail/{id}','Frontend\ShirtController@ViewDetail');
+route::get('detail/{id}','Frontend\ShirtController@ViewDetail')->name('vd');
 route::post('detail/cmt/{id}','Frontend\ShirtController@cmt');
 route::post('detail/rate/{id}','Frontend\ShirtController@rate');
 // route::post('/discount','Frontend\ShirtController@discount')->name('discount');
@@ -86,7 +86,7 @@ route::group(['prefix'=>'admin','namespace'=>'Backend','middleware' => 'check'],
 	
 	//home admin
 	route::get('home','HomeAdminController@home')->name('adminhome');
-	route::get('thongke','HomeAdminController@thongke');
+	route::post('thongke','HomeAdminController@thongke')->name('admin.thongke');
 	
 	//account
 	route::group(['prefix'=>'account'],function(){
@@ -124,6 +124,8 @@ route::group(['prefix'=>'admin','namespace'=>'Backend','middleware' => 'check'],
 		route::get('editPro/{id}','ProductController@getEditPro');
 		route::post('editPro/{id}','ProductController@postEditPro');
 		route::get('deletePro/{id}','ProductController@getDeletePro');
+		route::get('display/{id}','ProductController@display');
+		route::get('un_display/{id}','ProductController@un_display');
 	});
 
 	//IO

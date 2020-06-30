@@ -1,17 +1,17 @@
 <div class="side-bar col-lg-3">
 	<div class="search-hotel">
 		<h3 class="shopf-sear-headits-sear-head">
-			<span>Enter</span> your keyword</h3>
+			<span>Nhập</span> từ khoá</h3>
 		<form action="{{route('searchcus')}}" method="post">
 			{{@csrf_field()}}
-			<input type="search" placeholder="search here" name="searchcus">
-			<input type="submit" value="Search">
+			<input type="search" placeholder="nhập tại đây..." name="searchcus">
+			<input type="submit" value="Tìm kiếm">
 		</form>
 	</div>
 	<div class="left-side">
 		<form action="{{route('PriceRange')}}" method="post">
 			{{@csrf_field()}}
-			<h3 class="shopf-sear-headits-sear-head">Price Orange</h3>
+			<h3 class="shopf-sear-headits-sear-head">Khoảng giá</h3>
 			<ul>
 				<li>
 					<input type="radio" class="checked" value="0-300000" name="dis" id="dis1">
@@ -73,7 +73,7 @@
 	<div class="left-side">
 		<form action="{{route('discount')}}" method="post">
 			{{@csrf_field()}}
-			<h3 class="shopf-sear-headits-sear-head">Discount</h3>
+			<h3 class="shopf-sear-headits-sear-head">Giảm giá</h3>
 			<ul>
 				<li>
 					<input type="radio" class="checked" value="5" name="dis" id="dis1">

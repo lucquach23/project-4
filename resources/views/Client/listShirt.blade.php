@@ -65,7 +65,7 @@
 							
 								<div class="card-footer d-flex justify-content-end">
 									
-										<a class="fa fa-cart-plus" onclick="AddCart({{$ls->id_shirt}})" href="javaScript:" >  Add Cart</a>
+										<a class="fa fa-cart-plus" onclick="AddCart({{$ls->id_shirt}})" href="javaScript:" >Add Cart</a>
 									
 								</div>
                             </div>

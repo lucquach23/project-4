@@ -9,35 +9,28 @@ class CartController extends Controller
 {
     public function AddCart(Request $req,$id)
     {
-        // dd($id);
         $product=DB::table('shirt')->where('id_shirt',$id)->first();
        if( $product!= null)
        {
           
             $oldCart=Session('Cart')?Session('Cart'):null;
             $newCart=new Cart($oldCart);
-            $newCart->AddCart($product,$id);
-            
-             $req->session()->put('Cart',$newCart);    
-             //dd($newCart);
+            $newCart->AddCart($product,$id);           
+            $req->session()->put('Cart',$newCart);               
        }
       return view('Client.Cart');
-       //return view('Client.header',compact('newCart'));
     }
     public function DeleteItemCart(Request $req,$id)
-    {
-      
-      
-            $oldCart=Session('Cart')?Session('Cart'):null;
-            $newCart=new Cart($oldCart);
-            $newCart->DeleteItemCart($id);
-            if(count($newCart->products)>0)
-            {
-                $req->session()->put('Cart',$newCart); 
-            }else 
-            $req->session()->forget('Cart'); 
-            return view('Client.Cart');
-      
+    {     
+        $oldCart=Session('Cart')?Session('Cart'):null;
+        $newCart=new Cart($oldCart);
+        $newCart->DeleteItemCart($id);
+        if(count($newCart->products)>0)
+        {
+            $req->session()->put('Cart',$newCart); 
+        }else 
+        $req->session()->forget('Cart'); 
+        return view('Client.Cart');     
     }
     public function ViewListCart()
     {
@@ -45,8 +38,6 @@ class CartController extends Controller
     }
     public function DeleteListItemCart(Request $req,$id)
     {
-      
-      
             $oldCart=Session('Cart')?Session('Cart'):null;
             $newCart=new Cart($oldCart);
             $newCart->DeleteItemCart($id);
@@ -59,34 +50,23 @@ class CartController extends Controller
       
     }
     public function SaveListItemCart(Request $req,$id,$quanty,$size)
-    {
-      
-      
-           // dd($id,$quanty,$size);
-            $quan_size=DB::table('quantity_size')->where('id_shirt',$id)->where('size',$size)->first();
-            //dd($quan_size);
-           if((int)$quanty>$quan_size->quantity)
-           {
-               $tb='<script>
-                        alert("size '.$size.' sẵn có '.$quan_size->quantity.' trong kho!!!");
-                    </script>
-               ';
-               echo $tb;
-               return view('Client.list-cart');
-           }else{
-             $oldCart=Session('Cart')?Session('Cart'):null;
-            $newCart=new Cart($oldCart);
-           
-            $newCart->UpdateItemCart($id,$quanty,$size);
-            $req->session()->put('Cart',$newCart); 
-           
+    {  
+        $quan_size=DB::table('quantity_size')->where('id_shirt',$id)->where('size',$size)->first();            
+        if((int)$quanty>$quan_size->quantity)
+        {
+            $tb='<script>
+                    alert("size '.$size.' sẵn có '.$quan_size->quantity.' trong kho!!!");
+                    </script>';
+            echo $tb;
             return view('Client.list-cart');
-           }
-           //exit;
-
-
-
-           
-      
-    }
+        }else
+        {
+            $oldCart=Session('Cart')?Session('Cart'):null;
+            $newCart=new Cart($oldCart);                
+            $newCart->UpdateItemCart($id,$quanty,$size);
+            $req->session()->put('Cart',$newCart);                
+            return view('Client.list-cart');
+        }  
+    }     
+    
 }

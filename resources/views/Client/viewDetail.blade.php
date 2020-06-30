@@ -6,8 +6,12 @@
 			<span>Lu-Shirt</span></h4>
 	</div>
 	<!-- //inner banner -->
-	<!-- breadcrumbs -->
+    <!-- breadcrumbs -->
+    {{-- @if(session('mess'))
+        <div class="alert alert-danger">{{session('mess')}}</div>
+    @endif --}}
 	<nav aria-label="breadcrumb">
+       
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="/">Home</a>
@@ -20,10 +24,16 @@
             <li class="breadcrumb-item active" aria-current="page">Single Product</li>
 		</ol>
     </nav>
+    @if(session('mess'))
+    <center><div style="width:700px" class="alert alert-danger">{{session('mess')}}</div></center>
+@endif
     @foreach($viewDetail as $vd)
     <div style="margin-top: -86px;margin-bottom: -180px;"class="innerf-pages section py-5">
+        
         <div class="container">
+           
             <div class="row my-sm-5">
+                
             <div class="col-lg-4 single-right-left">
                 <div class="grid images_3_of_2">
                         <div class="flexslider1">
@@ -49,7 +59,7 @@
                     <div class="caption">
 
                         <ul class="rating-single">
-                            @for ($i = 0; $i <= $tbrate; $i++)
+                            @for ($i = 0; $i < $tbrate; $i++)
                             <li>
                                 <a href="#">
                                     <span class="fa fa-star yellow-star" aria-hidden="true"></span>
@@ -153,7 +163,7 @@
     </div>
     @break
     @endforeach
-    @if(Session('customer_id')!=null)
+    {{-- @if(Session('customer_id')!=null) --}}
     <section class="tabs_pro py-md-5 pt-sm-3 pb-5">
       
         <div class="tabs tabs-style-line pt-md-5">
@@ -180,16 +190,18 @@
                             <div style="float: left;"> {{$c->cmt}}</div>
                             </div><br>
                             @endforeach
-                           
+                            @if(Session('customer_id')!=null)
                             <div style="display: flex;display: flex;margin-top: 91px">
                                 <form action="cmt/{{$id_shirt}}" method="post">
                                     @csrf
-                                    <input style="height: 45px;
+                                    <input style="height: 45px; width:402px;
                                     border-radius: 5%;" type="text" name="cmt" placeholder="Nhập bình luận của bạn...">
                                     <button type="submit" class="btn btn-success">Bình luận</button>
-                                </form>
-                                
+                                </form>                                
                             </div>
+                            @else 
+                            <div style="margin-left: 132px;margin-top: 150px;margin-bottom: 63px;"> <a class="btn btn-success" href="{{route('login_checkout')}}">Bình luận</a></div>
+                            @endif
                         </div>
                         
                     </div>
@@ -203,6 +215,7 @@
                     <div id="owl-demo1" class="owl-carousel text-center">
                         <div>
                             <div style="width: 1020px;">
+                                @if(Session('customer_id')!=null)
                             <form action="rate/{{$id_shirt}}" method="post">
                                 @csrf
                                     <div id="rate" style="float: right">
@@ -240,6 +253,9 @@
                                     </div>
                                    
                                   </form>
+                                  @else 
+                                  <div style="margin-left: 132px;margin-top: 150px;margin-bottom: 63px;"> <a class="btn btn-success" href="{{route('login_checkout')}}">Đánh giá</a></div>
+                                  @endif
                             </div>
                             
                         </div>
@@ -251,9 +267,9 @@
             </div>
         </div>
     </section>
-    @else 
+    {{-- @else 
 <div style="margin-left: 132px;margin-top: 150px;margin-bottom: 63px;"> <a class="btn btn-primary" href="{{route('login_checkout')}}">Bình luận</a></div>
-    @endif
+    @endif --}}
     <div class="section singlep_btm pb-5">
         <div class="container">
             <div class="new_arrivals">

@@ -32,6 +32,7 @@
               <th>Giá bán</th>
               <th>Delete</th>
               <th>Edit</th>
+              <th>Hiển thị</th>
             </tr>
           </thead>
           <tbody>
@@ -72,6 +73,13 @@
               <th><a onclick="return confirm('Bạn có chắc chắn xoá sản phẩm này?');" style="color: red; font-size:26px;"  href="deletePro/{{$r->id_shirt}}" aria-hidden="true"><i class="fa fa-times"></i></a></th>
               <th><a  href="editPro/{{$r->id_shirt}}" style="color: green; font-size:26px;" class="fa fa-wrench"
                   aria-hidden="true"></a></th>
+                  <th>
+                    @if($r->status!=1)
+                    <a href="un_display/{{$r->id_shirt}}"><i style="font-size: 25px" class="fa-thumbs-styling fa fa-toggle-off"></i></a>
+                  @else
+                    <a href="display/{{$r->id_shirt}}"><i style="font-size: 25px" class="fa-thumbs-styling fa fa-toggle-on"></i></a>
+                  @endif
+                  </th>
             </tr>
             @endforeach
           </tbody>

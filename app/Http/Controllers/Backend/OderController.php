@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 
-use DB;
+//use DB;
 
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use PDF;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use PHPUnit\Util\Json;
 
@@ -40,7 +40,6 @@ class OderController extends Controller
    }
    public function confirm_order($id_order)
    {
-      // echo $id_order;
       $rs=DB::table('_order')->where('id_order',$id_order)->update(['status'=>2]);
       if($rs)
       {
@@ -134,10 +133,8 @@ public function re_order($id)
    }
    public function print_order_convert($checkout_code)
    {
-       $order=DB::table('_order')->where('id_order',$checkout_code)->first();
-       //$cus=DB::table('customer')->where('id_customer',$order->id_customer)->first();
+       $order=DB::table('_order')->where('id_order',$checkout_code)->first();     
        $order_detail=DB::table('order_detail')->where('id_order',$checkout_code)->get();
-       //dd($order,$cus,$order_detail);
        $output='';
        $output.='
         <style>
@@ -214,18 +211,7 @@ public function re_order($id)
                 $output.='</table>
                 <br><br>
                 <center>TỔNG TIỀN THU HỘ: '.number_format($order->total_money).' VNĐ</center>
-            </div>
-            
-
-
-
-
-
-
-
-     
-        
-        ';
+            </div>';
     return $output;
    }
 }
